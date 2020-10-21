@@ -22,3 +22,14 @@ insert into user (username, password) values ('wzf','696aa7bb5ee7ac9135f7ed4ef52
 insert into user (uid, username, password) values (null,'zs','696aa7bb5ee7ac9135f7ed4ef526fe4d');
 
 commit ;
+
+drop table if exists seller;
+create table if not exists seller(
+    sid INTEGER auto_increment comment '商家id',
+    sname VARCHAR(30) not null comment '商家名称',
+    spassword VARCHAR(30) not null comment '商家密码',
+    simg VARCHAR(128) comment '商家图片',
+    mark DOUBLE comment '评分',
+    express VARCHAR(20) not null comment '配送快递方式',
+    primary key (`sid`)
+);

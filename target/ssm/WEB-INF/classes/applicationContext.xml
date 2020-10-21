@@ -14,7 +14,7 @@
        https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--    1 组件扫描的范围,扫描Service和Repository,将Controller交由springmvc处理  -->
-    <context:component-scan base-package="vip.epss">
+    <context:component-scan base-package="com.ely">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
@@ -57,7 +57,7 @@
     </bean>
     <!--    3.2 让Spring配置可以扫描到的mapper文件,让MyBties可以扫描并匹配-->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="vip.epss.dao"></property>
+        <property name="basePackage" value="com.ely.dao"></property>
     </bean>
     <!--    4 事务配置-->
     <!--    4.1 事务管理器的Bean-->
@@ -78,7 +78,7 @@
         <!--    *   所有的返回值    不管什么方法,返回值任意-->
 
         <!--        表达式的写法:   访问权限[可省略] 返回值类型(*表示所有的返回值) 包.子包.方法(参数)-->
-        <aop:pointcut id="cudService" expression="execution (* vip.epss.service.impl.*Impl.*(..))"/>
+        <aop:pointcut id="cudService" expression="execution (* com.ely.service.impl.*Impl.*(..))"/>
         <aop:advisor advice-ref="advice" pointcut-ref="cudService"/>
     </aop:config>
 </beans>

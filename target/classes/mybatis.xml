@@ -17,6 +17,6 @@
     </settings>
     <!--    别名设置,默认情况下别名是类名的小写开头-->
     <typeAliases>
-        <package name="vip.epss.domain"/>
+        <package name="com.ely.domain"/>
     </typeAliases>
 </configuration>

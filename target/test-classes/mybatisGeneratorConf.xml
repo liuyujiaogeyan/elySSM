@@ -24,15 +24,15 @@
                         userId="${jdbc.user}"
                         password="${jdbc.password}"/>
         <!--        3 指定javaBean的生成位置-->
-        <javaModelGenerator targetPackage="vip.epss.domain" targetProject="./src/main/java">
+        <javaModelGenerator targetPackage="com.ely.domain" targetProject="./src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaModelGenerator>
         <!--        4 指定mapper的接口文件的位置-->
-        <sqlMapGenerator targetPackage="vip.epss.dao" targetProject="./src/main/java">
+        <sqlMapGenerator targetPackage="com.ely.dao" targetProject="./src/main/java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--        5 指定mapper的脚本文件位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="vip.epss.dao" targetProject="./src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ely.dao" targetProject="./src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--        6 指定数据表的生成策略-->
