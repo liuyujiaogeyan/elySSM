@@ -97,11 +97,55 @@ CALL customer_insert ();
 -- 商家信息表
 drop table if exists seller;
 create table if not exists seller(
-    sid INTEGER auto_increment comment '商家id',
-    sname VARCHAR(30) not null comment '商家名称',
-    spassword VARCHAR(30) not null comment '商家密码',
-    simg VARCHAR(128) comment '商家图片',
-    mark DOUBLE comment '评分',
-    express VARCHAR(20) not null comment '配送快递方式',
-    primary key (`sid`)
+                                     sid INTEGER auto_increment comment '商家id',
+                                     sname VARCHAR(30) not null comment '商家名称',
+                                     spassword VARCHAR(30) not null comment '商家密码',
+                                     simg VARCHAR(128) comment '商家图片',
+                                     mark DOUBLE comment '评分',
+                                     hid INTEGER comment '活动id',
+                                     express VARCHAR(20) not null comment '配送快递方式',
+                                     recommend BOOLEAN comment '是否推荐',
+                                     primary key (`sid`)
 );
+commit ;
+
+
+# 商家活动表
+drop table if exists sevent;
+create table if not exists sevent(
+    id INTEGER auto_increment comment '商家活动表的id,主键',
+    sid INTEGER not null comment '对应的商家id',
+    eid INTEGER not null comment '对应的活动id',
+    primary key (`id`),
+#     添加和商家信息表的外键约束
+    constraint `fk_sevent_to_seller_sid` foreign key account(`sid`) references seller(`sid`),
+#     添加和活动表的外键约束
+    constraint `fk_sevent_to_event_eid` foreign key account(`eid`) references event(`eid`)
+);
+commit ;
+
+
+# 活动表
+drop table if exists event;
+create table if not exists event(
+    eid INTEGER auto_increment comment '活动的id',
+    ename VARCHAR(30) not null comment '活动名称',
+    edesc VARCHAR(100) comment '活动简介',
+    primary key (`eid`)
+);
+commit ;
+
+
+# 商品表
+drop table  if exists product;
+create table if not exists product(
+    pid INTEGER auto_increment comment '商品id',
+    pname VARCHAR(20) not null comment '商品名称',
+    pimg VARCHAR(128) not null comment '商品图片',
+    pdesc VARCHAR(50) comment '商品介绍',
+    price DOUBLE not null comment '商品价格',
+    tid INTEGER comment '对应商品类别的编号',
+    primary key (`pid`)
+);
+alter table product add constraint `fk_product_to_prot_ptid` foreign key product(`tid`) references product_type(`ptid`);
+commit ;

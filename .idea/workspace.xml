@@ -10,47 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a7eb9e7-da34-481c-9b3d-73cfeb5db75e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/74b97239-e766-459d-9b73-6cb4ec0e69c5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/74b97239-e766-459d-9b73-6cb4ec0e69c5/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/dao/CustomerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/dao/CustomerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/dao/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/dao/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/interceptor/LoginInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/customValidationMessages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/customValidationMessages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/springmvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/template.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/template.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ely/test/MyBatisTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ely/test/MyBatisTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ely/test/SpringTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ely/test/SpringTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e41885e8-d5c4-4255-bb20-f4c7ac1fb01a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e41885e8-d5c4-4255-bb20-f4c7ac1fb01a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/mybatisGeneratorConf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/mybatisGeneratorConf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/customValidationMessages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/customValidationMessages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/springmvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/ely/dao/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/ely/dao/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/customValidationMessages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/customValidationMessages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/springmvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/springmvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/template.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/template.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/mybatisGeneratorConf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/mybatisGeneratorConf.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ideaworkspace" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -183,42 +145,63 @@
       <option name="presentableId" value="Default" />
       <updated>1603331184121</updated>
       <workItem from="1603331185489" duration="2237000" />
-      <workItem from="1603336723440" duration="1142000" />
+      <workItem from="1603336723440" duration="9156000" />
     </task>
+    <task id="LOCAL-00001" summary="包名修改,数据库创建">
+      <created>1603337955276</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603337955276</updated>
+    </task>
+    <task id="LOCAL-00002" summary="包名修改,数据库创建">
+      <created>1603337986960</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603337986960</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="包名修改,数据库创建" />
+    <option name="LAST_COMMIT_MESSAGE" value="包名修改,数据库创建" />
   </component>
   <component name="WindowStateProjectService">
     <state x="174" y="87" width="1092" height="718" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603337632381">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="174" y="87" width="1092" height="718" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860@0.0.1440.860" timestamp="1603337632381" />
-    <state x="259" y="0" key="CommitChangelistDialog2" timestamp="1603336954580">
+    <state x="259" y="0" key="CommitChangelistDialog2" timestamp="1603337984831">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1603336954580" />
-    <state x="500" y="187" key="FileChooserDialogImpl" timestamp="1603336044554">
+    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1603337984831" />
+    <state x="500" y="187" key="FileChooserDialogImpl" timestamp="1603348486818">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="500" y="187" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1603336044554" />
-    <state width="1123" height="181" key="GridCell.Tab.0.bottom" timestamp="1603337824302">
+    <state x="500" y="187" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1603348486818" />
+    <state width="1123" height="148" key="GridCell.Tab.0.bottom" timestamp="1603351264557">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1123" height="181" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603337824302" />
-    <state width="1123" height="181" key="GridCell.Tab.0.center" timestamp="1603337824302">
+    <state width="1123" height="148" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603351264557" />
+    <state width="1123" height="148" key="GridCell.Tab.0.center" timestamp="1603351264557">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1123" height="181" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603337824302" />
-    <state width="1123" height="181" key="GridCell.Tab.0.left" timestamp="1603337824302">
+    <state width="1123" height="148" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603351264557" />
+    <state width="1123" height="148" key="GridCell.Tab.0.left" timestamp="1603351264557">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1123" height="181" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603337824302" />
-    <state width="1123" height="181" key="GridCell.Tab.0.right" timestamp="1603337824302">
+    <state width="1123" height="148" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603351264557" />
+    <state width="1123" height="148" key="GridCell.Tab.0.right" timestamp="1603351264557">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1123" height="181" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603337824302" />
+    <state width="1123" height="148" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603351264557" />
     <state width="1123" height="479" key="GridCell.Tab.1.bottom" timestamp="1603337536282">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
@@ -251,9 +234,25 @@
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state width="1123" height="479" key="GridCell.Tab.2.right/0.0.1440.860@0.0.1440.860" timestamp="1603337536283" />
+    <state x="312" y="165" key="Vcs.Push.Dialog.v2" timestamp="1603337989208">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="312" y="165" key="Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860" timestamp="1603337989208" />
+    <state x="606" y="319" width="332" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1603350944672">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="606" y="319" width="332" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1440.860@0.0.1440.860" timestamp="1603350944672" />
+    <state x="555" y="208" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1603351005507">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="555" y="208" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1440.860@0.0.1440.860" timestamp="1603351005507" />
     <state x="525" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603331193841">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
     <state x="525" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1603331193841" />
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1603350027121">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860@0.0.1440.860" timestamp="1603350027121" />
   </component>
 </project>
