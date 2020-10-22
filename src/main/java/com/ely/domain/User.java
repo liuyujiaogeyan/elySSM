@@ -1,7 +1,10 @@
 package com.ely.domain;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class User {
     private Integer uid;
 
@@ -11,35 +14,5 @@ public class User {
 
     private Date addTime;
 
-    public Integer getUid() {
-        return uid;
-    }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Date getAddTime() {
-        return addTime;
-    }
-
-    public void setAddTime(Date addTime) {
-        this.addTime = addTime;
-    }
 }

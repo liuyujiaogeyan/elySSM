@@ -72,7 +72,7 @@ create table if not exists customer
 ) auto_increment=1 charset=utf8 comment '客户基本信息表';
 commit ;
 
-# 通过批处理插入测试数据
+# 通理过批处插入测试数据
 DROP PROCEDURE
     IF
         EXISTS customer_insert;
@@ -107,8 +107,24 @@ create table if not exists seller(
                                      recommend BOOLEAN comment '是否推荐',
                                      primary key (`sid`)
 );
+alter table seller add column add_time timestamp not null default current_timestamp comment '创建时间';
+alter table seller add column up_time  timestamp not null default current_timestamp on update current_timestamp comment '修改时间';
 commit ;
 
+# 添加商家信息表的数据
+insert into  seller (sname,spassword,simg,mark,hid,express,recommend) values ('万家饺子馆','123546',null,4.8,2,'蜂鸟专送',true),
+                                                                             ('小锅饭豆腐馆','123546',null,4.9,3,'美团专送',true),
+                                                                             ('大理寺砂锅米线','123546',null,4.6,2,'美团专送',false),
+                                                                             ('重庆小面','123546',null,4.8,1,'蜂鸟专送',true),
+                                                                             ('小红旗臭豆腐','123546',null,4.7,2,'美团专送',true),
+                                                                             ('小二家水果捞','123546',null,4.8,1,'蜂鸟专送',false),
+                                                                             ('韩式烤肉拌饭','123546',null,4.6,3,'美团专送',false),
+                                                                             ('Coco奶茶','123546',null,4.8,1,'美团专送',true),
+                                                                             ('满园春饼','123546',null,4.9,2,'蜂鸟专送',false),
+                                                                             ('麦当劳','123546',null,4.9,1,'蜂鸟专送',true),
+                                                                             ('肯德基','123546',null,4.9,4,'蜂鸟专送',true),
+                                                                             ('香满城炸肉','123546',null,4.9,5,'蜂鸟专送',false),
+                                                                             ('冷锅串串','123546',null,4.6,4,'美团专送',true);
 
 # 商家活动表
 drop table if exists sevent;
@@ -122,6 +138,8 @@ create table if not exists sevent(
 #     添加和活动表的外键约束
     constraint `fk_sevent_to_event_eid` foreign key account(`eid`) references event(`eid`)
 );
+alter table sevent add column add_time timestamp not null default current_timestamp comment '创建时间';
+alter table sevent add column up_time  timestamp not null default current_timestamp on update current_timestamp comment '修改时间';
 commit ;
 
 
@@ -133,11 +151,13 @@ create table if not exists event(
     edesc VARCHAR(100) comment '活动简介',
     primary key (`eid`)
 );
+alter table event add column add_time timestamp not null default current_timestamp comment '创建时间';
+alter table event add column up_time  timestamp not null default current_timestamp on update current_timestamp comment '修改时间';
 commit ;
 
 
 # 商品表
-drop table  if exists product;
+drop table if exists product;
 create table if not exists product(
     pid INTEGER auto_increment comment '商品id',
     pname VARCHAR(20) not null comment '商品名称',
@@ -147,5 +167,70 @@ create table if not exists product(
     tid INTEGER comment '对应商品类别的编号',
     primary key (`pid`)
 );
+alter table product add column fsid INTEGER comment '所属商家';
+alter table product add constraint `fk_product_to_seller_sid` foreign key product(`fsid`) references seller(`sid`);
 alter table product add constraint `fk_product_to_prot_ptid` foreign key product(`tid`) references product_type(`ptid`);
+alter table product add column add_time timestamp not null default current_timestamp comment '创建时间';
+alter table product add column up_time  timestamp not null default current_timestamp on update current_timestamp comment '修改时间';
 commit ;
+
+
+# 创建订单表
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders`  (
+                           `oid` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单编号',
+                           `ocount` int(11) NULL DEFAULT NULL COMMENT '商品数量',
+                           `oamount_status` int(11) NOT NULL COMMENT '订单状态',
+                           `receivename` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '收货人姓名',
+                           `receiveaddress` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '收货地址',
+                           `receivetel` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '收货人电话',
+                           `add_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+                           `up_time` timestamp(0) NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
+                           `fcid` int(11) NOT NULL COMMENT '所属用户',
+                           `fpid` int(11) NOT NULL COMMENT '商品代码',
+                           PRIMARY KEY (`oid`) USING BTREE,
+                           INDEX `fk_or_fcid_cus_cid`(`fcid`) USING BTREE,
+                           INDEX `fk_or_fpid_pro_pid`(`fpid`) USING BTREE,
+                           CONSTRAINT `fk_or_fcid_cus_cid` FOREIGN KEY (`fcid`) REFERENCES `customer` (`cid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+                           CONSTRAINT `fk_or_fpid_pro_pid` FOREIGN KEY (`fpid`) REFERENCES `product` (`pid`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
+INSERT INTO `orders` VALUES (1, 1, 1, '心静', '东软', '1388888888', '2020-10-22 15:15:53', '0000-00-00 00:00:00', 1, 1);
+INSERT INTO `orders` VALUES (2, 2, 2, '心境', '睿道', '1399999999', '2020-10-22 15:16:52', '0000-00-00 00:00:00', 2, 1);
+INSERT INTO `orders` VALUES (3, 3, 3, '新景', '普兰店', '1377777777', '2020-10-22 15:26:05', '0000-00-00 00:00:00', 3, 1);
+
+
+INSERT INTO `product` VALUES (1, '芹菜饺子', '美食', '好吃', 2, 8,1);
+INSERT INTO product (pname,pimg,pdesc,price,tid,fsid) VALUES ( '菌汤麻辣烫', '***', '鲜美', 12.8, 1,9),
+                             ('石锅烤肉拌饭', '***', '现烤鸡肉,韩国进口拌饭酱', 15.2, 3,7),
+                             ( '桃桃酸奶果汁', '***', '新鲜桃肉,自制酸奶,美味健康', 12.8, 4,8),
+                             ( '牛肉汤面', '***', '地道重庆小面,骨汤熬制', 16.3, 2,4),
+                             ( '肥羊米线', '***', '米线由大米制作,无添加剂,食材新鲜,放心食用', 12.8, 5,3),
+                             ( '冷面卷臭豆腐', '***', '刷点臭酱超好吃', 4, 7,5);
+
+
+DROP TABLE IF EXISTS `product_type`;
+CREATE TABLE `product_type`  (
+                                 `ptid` int(11) NOT NULL AUTO_INCREMENT COMMENT '分类代码',
+                                 `ptname` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '分类名称',
+                                 `ptlevel` int(11) NOT NULL COMMENT '分类等级',
+                                 `fparentlevel` int(11) NULL DEFAULT NULL COMMENT '上级分类',
+                                 PRIMARY KEY (`ptid`) USING BTREE,
+                                 UNIQUE INDEX `ptname`(`ptname`) USING BTREE,
+                                 INDEX `fk_pt_fptl_pt_ptid`(`fparentlevel`) USING BTREE,
+                                 CONSTRAINT `fk_pt_fptl_pt_ptid` FOREIGN KEY (`fparentlevel`) REFERENCES `product_type` (`ptid`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+
+
+INSERT INTO `product_type` VALUES (1, '中餐', 1, NULL);
+INSERT INTO `product_type` VALUES (2, '西餐', 1, NULL);
+INSERT INTO `product_type` VALUES (3, '快餐', 2, 1);
+INSERT INTO `product_type` VALUES (4, '熟食', 2, 1);
+INSERT INTO `product_type` VALUES (5, '拌菜', 2, 1);
+INSERT INTO `product_type` VALUES (6, '肯德基', 2, 2);
+INSERT INTO `product_type` VALUES (7, '麦当劳', 2, 2);
+INSERT INTO `product_type` VALUES (8, '饺子', 2, 2);
