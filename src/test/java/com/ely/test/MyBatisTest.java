@@ -1,13 +1,13 @@
 package com.ely.test;
 
-import com.ely.dao.CustomerMapper;
-import com.ely.dao.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
+import com.ely.dao.CustomerMapper;
+import com.ely.dao.UserMapper;
 import com.ely.domain.Customer;
 import com.ely.domain.User;
 

@@ -1,10 +1,10 @@
 package com.ely.test;
 
 
+import com.ely.service.UserService;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.ely.domain.User;
-import com.ely.service.UserService;
 
 public class SpringTest {
     @Test

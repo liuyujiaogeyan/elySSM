@@ -1,11 +1,12 @@
 package com.ely.service.impl;
 
-import com.ely.dao.UserMapper;
-import com.ely.service.UserService;
-import com.ely.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.ely.dao.UserMapper;
 import com.ely.domain.User;
+import com.ely.domain.UserExample;
+import com.ely.service.UserService;
+import com.ely.utils.MD5Util;
 
 import java.util.List;
 
@@ -19,41 +20,72 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+
     @Override
-    public User selectByPrimaryKey(Integer key) {
-        System.out.println("service的方法被调用了");
-        return userMapper.selectByPrimaryKey(key);
+    public long countByExample(UserExample example) {
+        return userMapper.countByExample(example);
     }
 
     @Override
-    public List<User> select() {
-        return userMapper.select();
+    public int deleteByExample(UserExample example) {
+        return userMapper.deleteByExample(example);
     }
 
     @Override
-    public Integer insert(User record) {
+    public int deleteByPrimaryKey(Integer uid) {
+        return userMapper.deleteByPrimaryKey(uid);
+    }
+
+    @Override
+    public int insert(User record) {
+        //对传递过来的明文密码加密为密文然后比对
+        record.setPassword(MD5Util.getMD5(record.getPassword()));
         return userMapper.insert(record);
     }
 
     @Override
-    public Integer delete(Integer key) {
-        return userMapper.delete(key);
-    }
-
-    @Override
-    public Integer update(User record) {
-        return userMapper.update(record);
-    }
-
-    @Override
-    public User selectByUser(User record) {
+    public int insertSelective(User record) {
         //对传递过来的明文密码加密为密文然后比对
         record.setPassword(MD5Util.getMD5(record.getPassword()));
-        return userMapper.selectByUser(record);
+        return userMapper.insertSelective(record);
     }
 
     @Override
-    public List<User> selectByUsername(String str) {
-        return userMapper.selectByUsername(str);
+    public List<User> selectByExample(UserExample example) {
+        return userMapper.selectByExample(example);
     }
+
+    @Override
+    public User selectByPrimaryKey(Integer uid) {
+        return userMapper.selectByPrimaryKey(uid);
+    }
+
+    @Override
+    public int updateByExampleSelective(User record, UserExample example) {
+        //对传递过来的明文密码加密为密文然后比对
+        record.setPassword(MD5Util.getMD5(record.getPassword()));
+        return userMapper.updateByExampleSelective(record,example);
+    }
+
+    @Override
+    public int updateByExample(User record, UserExample example) {
+        //对传递过来的明文密码加密为密文然后比对
+        record.setPassword(MD5Util.getMD5(record.getPassword()));
+        return userMapper.updateByExample(record,example);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(User record) {
+        //对传递过来的明文密码加密为密文然后比对
+        record.setPassword(MD5Util.getMD5(record.getPassword()));
+        return userMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int updateByPrimaryKey(User record) {
+        //对传递过来的明文密码加密为密文然后比对
+        record.setPassword(MD5Util.getMD5(record.getPassword()));
+        return userMapper.updateByPrimaryKey(record);
+    }
+
 }

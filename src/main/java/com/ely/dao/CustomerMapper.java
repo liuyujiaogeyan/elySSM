@@ -1,9 +1,10 @@
 package com.ely.dao;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
 import com.ely.domain.Customer;
 import com.ely.domain.CustomerExample;
+import org.apache.ibatis.annotations.Param;
 
 public interface CustomerMapper {
     long countByExample(CustomerExample example);
