@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a7eb9e7-da34-481c-9b3d-73cfeb5db75e" name="Default Changelist" comment="" />
+    <list default="true" id="6a7eb9e7-da34-481c-9b3d-73cfeb5db75e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,14 +85,14 @@
         <counts>
           <entry key="java" value="416" />
           <entry key="sql" value="38" />
-          <entry key="txt" value="36" />
+          <entry key="txt" value="38" />
           <entry key="xml" value="191" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="416" />
-          <entry key="PLAIN_TEXT" value="36" />
+          <entry key="PLAIN_TEXT" value="38" />
           <entry key="Scratch" value="38" />
           <entry key="XML" value="191" />
         </counts>
@@ -120,8 +122,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/ely/test/MyBatisTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+            <state relative-caret-position="156">
+              <caret line="33" column="24" lean-forward="true" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -398,7 +403,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1603414683375" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1603414871277" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -598,7 +603,7 @@
       <workItem from="1603331185489" duration="2237000" />
       <workItem from="1603336723440" duration="1142000" />
       <workItem from="1603339901778" duration="15697000" />
-      <workItem from="1603408514505" duration="5912000" />
+      <workItem from="1603408514505" duration="6166000" />
     </task>
     <task id="LOCAL-00001" summary="pull test">
       <created>1603340046398</created>
@@ -614,11 +619,18 @@
       <option name="project" value="LOCAL" />
       <updated>1603414645321</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="pull test&#10;add Adminuser1">
+      <created>1603414797775</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1603414797775</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21609000" />
+    <option name="totallyTimeSpent" value="21863000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -643,8 +655,8 @@
       <window_info anchor="bottom" id="Spring" order="9" />
       <window_info anchor="bottom" id="Database Console" order="10" sideWeight="0.49928367" weight="0.10228802" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5007163" side_tool="true" weight="0.10228802" />
-      <window_info active="true" anchor="bottom" id="Messages" order="13" visible="true" weight="0.32839838" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="12" sideWeight="0.5007163" side_tool="true" visible="true" weight="0.32839838" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49928367" weight="0.32839838" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
       <window_info anchor="bottom" id="Version Control" order="16" />
@@ -669,7 +681,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pull test" />
     <MESSAGE value="pull test&#10;add Adminuser" />
-    <option name="LAST_COMMIT_MESSAGE" value="pull test&#10;add Adminuser" />
+    <MESSAGE value="pull test&#10;add Adminuser1" />
+    <option name="LAST_COMMIT_MESSAGE" value="pull test&#10;add Adminuser1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="174" y="87" width="1092" height="718" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603337632381">
@@ -1044,8 +1057,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/ely/test/MyBatisTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        <state relative-caret-position="156">
+          <caret line="33" column="24" lean-forward="true" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
