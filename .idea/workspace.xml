@@ -9,30 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a7eb9e7-da34-481c-9b3d-73cfeb5db75e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admintest.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/ely/test/MyGeneratorDomain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/dao/CustomerMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/dao/CustomerMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/Customer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/CustomerExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/utils/MD5Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/utils/MD5Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ely/test/MyBatisTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ely/test/MyBatisTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/customValidationMessages.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/springmvc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/ely/dao/CustomerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/com/ely/dao/CustomerMapper.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6a7eb9e7-da34-481c-9b3d-73cfeb5db75e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +62,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="40" />
+          <entry key="java" value="41" />
           <entry key="jsp" value="10" />
           <entry key="properties" value="2" />
           <entry key="sql" value="6" />
@@ -94,7 +71,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="40" />
+          <entry key="JAVA" value="41" />
           <entry key="JSP" value="10" />
           <entry key="Properties" value="2" />
           <entry key="SQL" value="3" />
@@ -106,14 +83,14 @@
         <counts>
           <entry key="java" value="416" />
           <entry key="sql" value="38" />
-          <entry key="txt" value="18" />
+          <entry key="txt" value="36" />
           <entry key="xml" value="191" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="416" />
-          <entry key="PLAIN_TEXT" value="18" />
+          <entry key="PLAIN_TEXT" value="36" />
           <entry key="Scratch" value="38" />
           <entry key="XML" value="191" />
         </counts>
@@ -131,11 +108,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="499">
-              <caret line="144" column="26" lean-forward="true" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="26" />
+            <state relative-caret-position="391">
+              <caret line="185" column="24" lean-forward="true" selection-start-line="185" selection-end-line="186" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/ely/test/MyBatisTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -412,7 +398,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1603414440257" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1603414683375" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -612,7 +598,7 @@
       <workItem from="1603331185489" duration="2237000" />
       <workItem from="1603336723440" duration="1142000" />
       <workItem from="1603339901778" duration="15697000" />
-      <workItem from="1603408514505" duration="5580000" />
+      <workItem from="1603408514505" duration="5912000" />
     </task>
     <task id="LOCAL-00001" summary="pull test">
       <created>1603340046398</created>
@@ -621,17 +607,23 @@
       <option name="project" value="LOCAL" />
       <updated>1603340046398</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="pull test&#10;add Adminuser">
+      <created>1603414645321</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603414645321</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21277000" />
+    <option name="totallyTimeSpent" value="21609000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24713467" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24713467" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -652,7 +644,7 @@
       <window_info anchor="bottom" id="Database Console" order="10" sideWeight="0.49928367" weight="0.10228802" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5007163" side_tool="true" weight="0.10228802" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.3287483" />
+      <window_info active="true" anchor="bottom" id="Messages" order="13" visible="true" weight="0.32839838" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
       <window_info anchor="bottom" id="Version Control" order="16" />
@@ -676,7 +668,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pull test" />
-    <option name="LAST_COMMIT_MESSAGE" value="pull test" />
+    <MESSAGE value="pull test&#10;add Adminuser" />
+    <option name="LAST_COMMIT_MESSAGE" value="pull test&#10;add Adminuser" />
   </component>
   <component name="WindowStateProjectService">
     <state x="174" y="87" width="1092" height="718" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603337632381">
@@ -895,13 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ely/test/MyBatisTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="26" column="2" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ely/dao/ProductTypeMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1051,8 +1037,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="144" column="26" lean-forward="true" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="26" />
+        <state relative-caret-position="391">
+          <caret line="185" column="24" lean-forward="true" selection-start-line="185" selection-end-line="186" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ely/test/MyBatisTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
         </state>
       </provider>
     </entry>
