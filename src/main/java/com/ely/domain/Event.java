@@ -5,12 +5,12 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class User {
-    private Integer uid;
+public class Event {
+    private Integer eid;
 
-    private String username;
+    private String ename;
 
-    private String password;
+    private String edesc;
 
     private Date addTime;
 
