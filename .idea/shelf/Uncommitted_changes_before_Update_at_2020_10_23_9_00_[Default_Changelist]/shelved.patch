@@ -1,0 +1,310 @@
+Index: target/test-classes/db.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># 首先创建一个数据库(Tab补全)\r\ndrop database if exists java6ssm;\r\ncreate database if not exists java6ssm;\r\n\r\nuse java6ssm;\r\n\r\n# 创建管理用户数据表\r\ndrop table if exists adminuser;\r\ncreate table if not exists adminuser\r\n(\r\n    uid      integer auto_increment comment '用户id',\r\n    username varchar(20) not null comment '用户登录名',\r\n    password varchar(32) not null comment '登录密码',\r\n    add_time timestamp   not null default current_timestamp comment '创建时间',\r\n    up_time  timestamp   not null default current_timestamp on update current_timestamp comment '修改时间',\r\n    primary key (`uid`)\r\n) comment '管理用户登录表';\r\n\r\ncommit;\r\n# 插入管理用户测试数据\r\ninsert into adminuser (username, password)\r\nvalues ('wzf', 'fe8fb64eb34764f9e0a58a32a819dcb2');\r\ninsert into adminuser (uid, username, password)\r\nvalues (null, 'admin', 'fe8fb64eb34764f9e0a58a32a819dcb2');\r\n\r\n# 批量插入测试数据\r\nDROP PROCEDURE\r\n    IF\r\n        EXISTS adminuser_insert;\r\n\r\nDELIMITER $$\r\nCREATE PROCEDURE adminuser_insert ()\r\nBEGIN\r\n    DECLARE\r\n        i INT DEFAULT 1;\r\n    WHILE\r\n            i < 100 DO\r\n            insert into adminuser (username,password) value (concat('user',i),'fe8fb64eb34764f9e0a58a32a819dcb2') ;\r\n            SET i = i + 1;\r\n\r\n        END WHILE;\r\n    COMMIT;\r\n\r\nEND $$\r\nDELIMITER ;\r\nCALL adminuser_insert ();\r\n\r\n\r\n\r\ncommit;\r\n\r\n# 创建客户数据表\r\ndrop table if exists customer;\r\ncreate table if not exists customer\r\n(\r\n    cid integer auto_increment comment '客户id',\r\n    cname varchar(20) not null comment '客户姓名',\r\n    cphone varchar(20) default null comment '联系电话',\r\n    cemail varchar(64) default null comment '邮箱地址',\r\n    cpass varchar(32) not null comment '密码',\r\n    cbirth date default null comment '生日',\r\n    cavatar varchar(50) default null comment '头像',\r\n    cgender boolean default false comment '性别',\r\n    cstatus boolean default false comment '是否禁用',\r\n    add_time timestamp   not null default current_timestamp comment '创建时间',\r\n    up_time  timestamp   not null default current_timestamp on update current_timestamp comment '修改时间',\r\n    primary key (`cid`),\r\n    UNIQUE KEY `cid` (`cid`),\r\n    UNIQUE KEY `cname` (`cname`),\r\n    UNIQUE KEY `cphone` (`cphone`),\r\n    UNIQUE KEY `cemail` (`cemail`)\r\n) auto_increment=1 charset=utf8 comment '客户基本信息表';\r\ncommit ;\r\n\r\n# 通过批处理插入测试数据\r\nDROP PROCEDURE\r\n    IF\r\n        EXISTS customer_insert;\r\n\r\nDELIMITER $$\r\nCREATE PROCEDURE customer_insert ()\r\nBEGIN\r\n    DECLARE\r\n        i INT DEFAULT 1;\r\n    WHILE\r\n            i < 100 DO\r\n            insert into customer (cname,cpass) value (concat('cus',i),'696aa7bb5ee7ac9135f7ed4ef526fe4d') ;\r\n            SET i = i + 1;\r\n\r\n        END WHILE;\r\n    COMMIT;\r\n\r\nEND $$\r\nDELIMITER ;\r\nCALL customer_insert ();\r\n\r\n-- 商家信息表\r\ndrop table if exists seller;\r\ncreate table if not exists seller(\r\n                                     sid INTEGER auto_increment comment '商家id',\r\n                                     sname VARCHAR(30) not null comment '商家名称',\r\n                                     spassword VARCHAR(30) not null comment '商家密码',\r\n                                     simg VARCHAR(128) comment '商家图片',\r\n                                     mark DOUBLE comment '评分',\r\n                                     hid INTEGER comment '活动id',\r\n                                     express VARCHAR(20) not null comment '配送快递方式',\r\n                                     recommend BOOLEAN comment '是否推荐',\r\n                                     primary key (`sid`)\r\n);\r\ncommit ;\r\n\r\n\r\n# 商家活动表\r\ndrop table if exists sevent;\r\ncreate table if not exists sevent(\r\n    id INTEGER auto_increment comment '商家活动表的id,主键',\r\n    sid INTEGER not null comment '对应的商家id',\r\n    eid INTEGER not null comment '对应的活动id',\r\n    primary key (`id`),\r\n#     添加和商家信息表的外键约束\r\n    constraint `fk_sevent_to_seller_sid` foreign key account(`sid`) references seller(`sid`),\r\n#     添加和活动表的外键约束\r\n    constraint `fk_sevent_to_event_eid` foreign key account(`eid`) references event(`eid`)\r\n);\r\ncommit ;\r\n\r\n\r\n# 活动表\r\ndrop table if exists event;\r\ncreate table if not exists event(\r\n    eid INTEGER auto_increment comment '活动的id',\r\n    ename VARCHAR(30) not null comment '活动名称',\r\n    edesc VARCHAR(100) comment '活动简介',\r\n    primary key (`eid`)\r\n);\r\ncommit ;\r\n\r\n\r\n# 商品表\r\ndrop table  if exists product;\r\ncreate table if not exists product(\r\n    pid INTEGER auto_increment comment '商品id',\r\n    pname VARCHAR(20) not null comment '商品名称',\r\n    pimg VARCHAR(128) not null comment '商品图片',\r\n    pdesc VARCHAR(50) comment '商品介绍',\r\n    price DOUBLE not null comment '商品价格',\r\n    tid INTEGER comment '对应商品类别的编号',\r\n    primary key (`pid`)\r\n);\r\nalter table product add constraint `fk_product_to_prot_ptid` foreign key product(`tid`) references product_type(`ptid`);\r\ncommit ;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- target/test-classes/db.sql	(revision d5cbe24e817c6cc90cfc58ae5ae3d46666106de0)
++++ target/test-classes/db.sql	(date 1603358232131)
+@@ -72,7 +72,7 @@
+ ) auto_increment=1 charset=utf8 comment '客户基本信息表';
+ commit ;
+ 
+-# 通过批处理插入测试数据
++# 通理过批处插入测试数据
+ DROP PROCEDURE
+     IF
+         EXISTS customer_insert;
+@@ -107,8 +107,24 @@
+                                      recommend BOOLEAN comment '是否推荐',
+                                      primary key (`sid`)
+ );
++alter table seller add column add_time timestamp not null default current_timestamp comment '创建时间';
++alter table seller add column up_time  timestamp not null default current_timestamp on update current_timestamp comment '修改时间';
+ commit ;
+ 
++# 添加商家信息表的数据
++insert into  seller (sname,spassword,simg,mark,hid,express,recommend) values ('万家饺子馆','123546',null,4.8,2,'蜂鸟专送',true),
++                                                                             ('小锅饭豆腐馆','123546',null,4.9,3,'美团专送',true),
++                                                                             ('大理寺砂锅米线','123546',null,4.6,2,'美团专送',false),
++                                                                             ('重庆小面','123546',null,4.8,1,'蜂鸟专送',true),
++                                                                             ('小红旗臭豆腐','123546',null,4.7,2,'美团专送',true),
++                                                                             ('小二家水果捞','123546',null,4.8,1,'蜂鸟专送',false),
++                                                                             ('韩式烤肉拌饭','123546',null,4.6,3,'美团专送',false),
++                                                                             ('Coco奶茶','123546',null,4.8,1,'美团专送',true),
++                                                                             ('满园春饼','123546',null,4.9,2,'蜂鸟专送',false),
++                                                                             ('麦当劳','123546',null,4.9,1,'蜂鸟专送',true),
++                                                                             ('肯德基','123546',null,4.9,4,'蜂鸟专送',true),
++                                                                             ('香满城炸肉','123546',null,4.9,5,'蜂鸟专送',false),
++                                                                             ('冷锅串串','123546',null,4.6,4,'美团专送',true);
+ 
+ # 商家活动表
+ drop table if exists sevent;
+@@ -122,6 +138,8 @@
+ #     添加和活动表的外键约束
+     constraint `fk_sevent_to_event_eid` foreign key account(`eid`) references event(`eid`)
+ );
++alter table sevent add column add_time timestamp not null default current_timestamp comment '创建时间';
++alter table sevent add column up_time  timestamp not null default current_timestamp on update current_timestamp comment '修改时间';
+ commit ;
+ 
+ 
+@@ -133,11 +151,13 @@
+     edesc VARCHAR(100) comment '活动简介',
+     primary key (`eid`)
+ );
++alter table event add column add_time timestamp not null default current_timestamp comment '创建时间';
++alter table event add column up_time  timestamp not null default current_timestamp on update current_timestamp comment '修改时间';
+ commit ;
+ 
+ 
+ # 商品表
+-drop table  if exists product;
++drop table if exists product;
+ create table if not exists product(
+     pid INTEGER auto_increment comment '商品id',
+     pname VARCHAR(20) not null comment '商品名称',
+@@ -147,5 +167,70 @@
+     tid INTEGER comment '对应商品类别的编号',
+     primary key (`pid`)
+ );
++alter table product add column fsid INTEGER comment '所属商家';
++alter table product add constraint `fk_product_to_seller_sid` foreign key product(`fsid`) references seller(`sid`);
+ alter table product add constraint `fk_product_to_prot_ptid` foreign key product(`tid`) references product_type(`ptid`);
++alter table product add column add_time timestamp not null default current_timestamp comment '创建时间';
++alter table product add column up_time  timestamp not null default current_timestamp on update current_timestamp comment '修改时间';
+ commit ;
++
++
++# 创建订单表
++DROP TABLE IF EXISTS `orders`;
++CREATE TABLE `orders`  (
++                           `oid` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单编号',
++                           `ocount` int(11) NULL DEFAULT NULL COMMENT '商品数量',
++                           `oamount_status` int(11) NOT NULL COMMENT '订单状态',
++                           `receivename` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '收货人姓名',
++                           `receiveaddress` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '收货地址',
++                           `receivetel` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '收货人电话',
++                           `add_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '创建时间',
++                           `up_time` timestamp(0) NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
++                           `fcid` int(11) NOT NULL COMMENT '所属用户',
++                           `fpid` int(11) NOT NULL COMMENT '商品代码',
++                           PRIMARY KEY (`oid`) USING BTREE,
++                           INDEX `fk_or_fcid_cus_cid`(`fcid`) USING BTREE,
++                           INDEX `fk_or_fpid_pro_pid`(`fpid`) USING BTREE,
++                           CONSTRAINT `fk_or_fcid_cus_cid` FOREIGN KEY (`fcid`) REFERENCES `customer` (`cid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
++                           CONSTRAINT `fk_or_fpid_pro_pid` FOREIGN KEY (`fpid`) REFERENCES `product` (`pid`) ON DELETE RESTRICT ON UPDATE RESTRICT
++) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
++
++-- ----------------------------
++-- Records of orders
++-- ----------------------------
++INSERT INTO `orders` VALUES (1, 1, 1, '心静', '东软', '1388888888', '2020-10-22 15:15:53', '0000-00-00 00:00:00', 1, 1);
++INSERT INTO `orders` VALUES (2, 2, 2, '心境', '睿道', '1399999999', '2020-10-22 15:16:52', '0000-00-00 00:00:00', 2, 1);
++INSERT INTO `orders` VALUES (3, 3, 3, '新景', '普兰店', '1377777777', '2020-10-22 15:26:05', '0000-00-00 00:00:00', 3, 1);
++
++
++INSERT INTO `product` VALUES (1, '芹菜饺子', '美食', '好吃', 2, 8,1);
++INSERT INTO product (pname,pimg,pdesc,price,tid,fsid) VALUES ( '菌汤麻辣烫', '***', '鲜美', 12.8, 1,9),
++                             ('石锅烤肉拌饭', '***', '现烤鸡肉,韩国进口拌饭酱', 15.2, 3,7),
++                             ( '桃桃酸奶果汁', '***', '新鲜桃肉,自制酸奶,美味健康', 12.8, 4,8),
++                             ( '牛肉汤面', '***', '地道重庆小面,骨汤熬制', 16.3, 2,4),
++                             ( '肥羊米线', '***', '米线由大米制作,无添加剂,食材新鲜,放心食用', 12.8, 5,3),
++                             ( '冷面卷臭豆腐', '***', '刷点臭酱超好吃', 4, 7,5);
++
++
++DROP TABLE IF EXISTS `product_type`;
++CREATE TABLE `product_type`  (
++                                 `ptid` int(11) NOT NULL AUTO_INCREMENT COMMENT '分类代码',
++                                 `ptname` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '分类名称',
++                                 `ptlevel` int(11) NOT NULL COMMENT '分类等级',
++                                 `fparentlevel` int(11) NULL DEFAULT NULL COMMENT '上级分类',
++                                 PRIMARY KEY (`ptid`) USING BTREE,
++                                 UNIQUE INDEX `ptname`(`ptname`) USING BTREE,
++                                 INDEX `fk_pt_fptl_pt_ptid`(`fparentlevel`) USING BTREE,
++                                 CONSTRAINT `fk_pt_fptl_pt_ptid` FOREIGN KEY (`fparentlevel`) REFERENCES `product_type` (`ptid`) ON DELETE RESTRICT ON UPDATE RESTRICT
++) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
++
++
++
++INSERT INTO `product_type` VALUES (1, '中餐', 1, NULL);
++INSERT INTO `product_type` VALUES (2, '西餐', 1, NULL);
++INSERT INTO `product_type` VALUES (3, '快餐', 2, 1);
++INSERT INTO `product_type` VALUES (4, '熟食', 2, 1);
++INSERT INTO `product_type` VALUES (5, '拌菜', 2, 1);
++INSERT INTO `product_type` VALUES (6, '肯德基', 2, 2);
++INSERT INTO `product_type` VALUES (7, '麦当劳', 2, 2);
++INSERT INTO `product_type` VALUES (8, '饺子', 2, 2);
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"elySSM:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"6a7eb9e7-da34-481c-9b3d-73cfeb5db75e\" name=\"Default Changelist\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/e41885e8-d5c4-4255-bb20-f4c7ac1fb01a.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources/e41885e8-d5c4-4255-bb20-f4c7ac1fb01a.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/resources/db.sql\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/resources/db.sql\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/test-classes/db.sql\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/test-classes/db.sql\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHome\" value=\"D:\\tool\\ideaIU-2020.2.1.win\\plugins\\maven\\lib\\maven3\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1jDGKLAKU3BqWmBOqe2BalMwTfq\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"DatabaseDriversLRU\" value=\"mysql\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../ideaworkspace\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"ArquillianJUnit\" factoryName=\"\" nameIsGenerated=\"true\">\r\n      <option name=\"arquillianRunConfiguration\">\r\n        <value>\r\n          <option name=\"containerStateName\" value=\"\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Tomcat 9.0.37\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 9.0.37\" ALTERNATIVE_JRE_ENABLED=\"false\" nameIsGenerated=\"true\">\r\n      <option name=\"OPEN_IN_BROWSER_URL\" value=\"http://localhost:8080/elySSM_war_exploded/\" />\r\n      <option name=\"BROWSER_ID\" value=\"98ca6316-2f89-46d9-a9e5-fa9e2b0625b3\" />\r\n      <option name=\"UPDATE_ON_FRAME_DEACTIVATION\" value=\"true\" />\r\n      <option name=\"UPDATE_CLASSES_ON_FRAME_DEACTIVATION\" value=\"true\" />\r\n      <deployment>\r\n        <artifact name=\"elySSM:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/elySSM_war_exploded\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"Unnamed_elySSM_3\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"51651\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"elySSM:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"6a7eb9e7-da34-481c-9b3d-73cfeb5db75e\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1603331184121</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1603331184121</updated>\r\n      <workItem from=\"1603331185489\" duration=\"2237000\" />\r\n      <workItem from=\"1603336723440\" duration=\"15061000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"包名修改,数据库创建\">\r\n      <created>1603337955276</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1603337955276</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"包名修改,数据库创建\">\r\n      <created>1603337986960</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1603337986960</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"数据库创建\">\r\n      <created>1603351545301</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1603351545301</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT\" value=\"false\" />\r\n    <option name=\"CHECK_NEW_TODO\" value=\"false\" />\r\n    <MESSAGE value=\"包名修改,数据库创建\" />\r\n    <MESSAGE value=\"数据库创建\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"数据库创建\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"174\" y=\"87\" width=\"1092\" height=\"718\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog\" timestamp=\"1603337632381\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"174\" y=\"87\" width=\"1092\" height=\"718\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860@0.0.1440.860\" timestamp=\"1603337632381\" />\r\n    <state x=\"259\" y=\"0\" key=\"CommitChangelistDialog2\" timestamp=\"1603351543388\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"259\" y=\"0\" key=\"CommitChangelistDialog2/0.0.1440.860@0.0.1440.860\" timestamp=\"1603351543388\" />\r\n    <state x=\"500\" y=\"187\" key=\"FileChooserDialogImpl\" timestamp=\"1603348486818\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"500\" y=\"187\" key=\"FileChooserDialogImpl/0.0.1440.860@0.0.1440.860\" timestamp=\"1603348486818\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1603358213452\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860\" timestamp=\"1603358213452\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.center\" timestamp=\"1603358213452\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860\" timestamp=\"1603358213452\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.left\" timestamp=\"1603358213452\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860\" timestamp=\"1603358213452\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.right\" timestamp=\"1603358213452\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860\" timestamp=\"1603358213452\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.bottom\" timestamp=\"1603357739725\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.center\" timestamp=\"1603357739725\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.left\" timestamp=\"1603357739725\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.right\" timestamp=\"1603357739725\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.bottom\" timestamp=\"1603357739726\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.bottom/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739726\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.center\" timestamp=\"1603357739725\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.center/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.left\" timestamp=\"1603357739725\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.left/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.right\" timestamp=\"1603357739725\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.right/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state x=\"312\" y=\"165\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1603351550886\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"312\" y=\"165\" key=\"Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860\" timestamp=\"1603351550886\" />\r\n    <state x=\"606\" y=\"319\" width=\"332\" height=\"231\" key=\"com.intellij.database.actions.DdlActions$DeleteProvider2$1\" timestamp=\"1603350944672\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"606\" y=\"319\" width=\"332\" height=\"231\" key=\"com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1440.860@0.0.1440.860\" timestamp=\"1603350944672\" />\r\n    <state x=\"555\" y=\"208\" key=\"com.intellij.database.view.ui.AbstractDbRefactoringDialog\" timestamp=\"1603354258362\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"555\" y=\"208\" key=\"com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1440.860@0.0.1440.860\" timestamp=\"1603354258362\" />\r\n    <state x=\"525\" y=\"345\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1603331193841\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"525\" y=\"345\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860\" timestamp=\"1603331193841\" />\r\n    <state x=\"383\" y=\"180\" width=\"672\" height=\"678\" key=\"search.everywhere.popup\" timestamp=\"1603350027121\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"383\" y=\"180\" width=\"672\" height=\"678\" key=\"search.everywhere.popup/0.0.1440.860@0.0.1440.860\" timestamp=\"1603350027121\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision d5cbe24e817c6cc90cfc58ae5ae3d46666106de0)
++++ .idea/workspace.xml	(date 1603414802194)
+@@ -10,9 +10,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="6a7eb9e7-da34-481c-9b3d-73cfeb5db75e" name="Default Changelist" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e41885e8-d5c4-4255-bb20-f4c7ac1fb01a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e41885e8-d5c4-4255-bb20-f4c7ac1fb01a.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/resources/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/db.sql" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/test-classes/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/db.sql" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -47,20 +45,9 @@
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ideaworkspace" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ssm" />
+   </component>
+   <component name="RunManager">
+-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+-      <option name="arquillianRunConfiguration">
+-        <value>
+-          <option name="containerStateName" value="" />
+-        </value>
+-      </option>
+-      <option name="TEST_OBJECT" value="class" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+     <configuration name="Tomcat 9.0.37" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.37" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/elySSM_war_exploded/" />
+       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+@@ -146,7 +133,8 @@
+       <option name="presentableId" value="Default" />
+       <updated>1603331184121</updated>
+       <workItem from="1603331185489" duration="2237000" />
+-      <workItem from="1603336723440" duration="15061000" />
++      <workItem from="1603336723440" duration="15886000" />
++      <workItem from="1603414462463" duration="327000" />
+     </task>
+     <task id="LOCAL-00001" summary="包名修改,数据库创建">
+       <created>1603337955276</created>
+@@ -169,7 +157,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1603351545301</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="数据库添加数据">
++      <created>1603358254453</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1603358254453</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -180,73 +175,74 @@
+     <option name="CHECK_NEW_TODO" value="false" />
+     <MESSAGE value="包名修改,数据库创建" />
+     <MESSAGE value="数据库创建" />
+-    <option name="LAST_COMMIT_MESSAGE" value="数据库创建" />
++    <MESSAGE value="数据库添加数据" />
++    <option name="LAST_COMMIT_MESSAGE" value="数据库添加数据" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="174" y="87" width="1092" height="718" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603337632381">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state x="174" y="87" width="1092" height="718" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860@0.0.1440.860" timestamp="1603337632381" />
+-    <state x="259" y="0" key="CommitChangelistDialog2" timestamp="1603351543388">
++    <state x="259" y="0" key="CommitChangelistDialog2" timestamp="1603358251957">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1603351543388" />
++    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1603358251957" />
+     <state x="500" y="187" key="FileChooserDialogImpl" timestamp="1603348486818">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state x="500" y="187" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1603348486818" />
+-    <state width="937" height="94" key="GridCell.Tab.0.bottom" timestamp="1603358213452">
++    <state width="937" height="94" key="GridCell.Tab.0.bottom" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603358213452" />
+-    <state width="937" height="94" key="GridCell.Tab.0.center" timestamp="1603358213452">
++    <state width="937" height="94" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.0.center" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603358213452" />
+-    <state width="937" height="94" key="GridCell.Tab.0.left" timestamp="1603358213452">
++    <state width="937" height="94" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.0.left" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603358213452" />
+-    <state width="937" height="94" key="GridCell.Tab.0.right" timestamp="1603358213452">
++    <state width="937" height="94" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.0.right" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603358213452" />
+-    <state width="937" height="94" key="GridCell.Tab.1.bottom" timestamp="1603357739725">
++    <state width="937" height="94" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.1.bottom" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="937" height="94" key="GridCell.Tab.1.center" timestamp="1603357739725">
++    <state width="937" height="94" key="GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.1.center" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="937" height="94" key="GridCell.Tab.1.left" timestamp="1603357739725">
++    <state width="937" height="94" key="GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.1.left" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="937" height="94" key="GridCell.Tab.1.right" timestamp="1603357739725">
++    <state width="937" height="94" key="GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.1.right" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="937" height="94" key="GridCell.Tab.2.bottom" timestamp="1603357739726">
++    <state width="937" height="94" key="GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.2.bottom" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.2.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603357739726" />
+-    <state width="937" height="94" key="GridCell.Tab.2.center" timestamp="1603357739725">
++    <state width="937" height="94" key="GridCell.Tab.2.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.2.center" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.2.center/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="937" height="94" key="GridCell.Tab.2.left" timestamp="1603357739725">
++    <state width="937" height="94" key="GridCell.Tab.2.center/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.2.left" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.2.left/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="937" height="94" key="GridCell.Tab.2.right" timestamp="1603357739725">
++    <state width="937" height="94" key="GridCell.Tab.2.left/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state width="937" height="94" key="GridCell.Tab.2.right" timestamp="1603359059940">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state width="937" height="94" key="GridCell.Tab.2.right/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state x="312" y="165" key="Vcs.Push.Dialog.v2" timestamp="1603351550886">
++    <state width="937" height="94" key="GridCell.Tab.2.right/0.0.1440.860@0.0.1440.860" timestamp="1603359059940" />
++    <state x="312" y="165" key="Vcs.Push.Dialog.v2" timestamp="1603358261083">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state x="312" y="165" key="Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860" timestamp="1603351550886" />
++    <state x="312" y="165" key="Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860" timestamp="1603358261083" />
+     <state x="606" y="319" width="332" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1603350944672">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
