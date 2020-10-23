@@ -55,14 +55,14 @@
 <!--        <table tableName="product" domainObjectName="Product">-->
 <!--            <ignoreColumn column="up_time"></ignoreColumn>-->
 <!--        </table>-->
-<!--        <table tableName="product_type" domainObjectName="ProductType">-->
-<!--            <ignoreColumn column="up_time"></ignoreColumn>-->
-<!--        </table>-->
+        <table tableName="product_type" domainObjectName="ProductType">
+            <ignoreColumn column="up_time"></ignoreColumn>
+        </table>
 <!--        <table tableName="seller" domainObjectName="Seller">-->
 <!--            <ignoreColumn column="up_time"></ignoreColumn>-->
 <!--        </table>-->
-        <table tableName="sevent" domainObjectName="Sevent">
-            <ignoreColumn column="up_time"></ignoreColumn>
-        </table>
+<!--        <table tableName="sevent" domainObjectName="Sevent">-->
+<!--            <ignoreColumn column="up_time"></ignoreColumn>-->
+<!--        </table>-->
     </context>
 </generatorConfiguration>

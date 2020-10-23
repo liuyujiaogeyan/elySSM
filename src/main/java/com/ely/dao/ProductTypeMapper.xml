@@ -6,6 +6,7 @@
     <result column="ptname" jdbcType="VARCHAR" property="ptname" />
     <result column="ptlevel" jdbcType="INTEGER" property="ptlevel" />
     <result column="fparentlevel" jdbcType="INTEGER" property="fparentlevel" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ptid, ptname, ptlevel, fparentlevel
+    ptid, ptname, ptlevel, fparentlevel, add_time
   </sql>
   <select id="selectByExample" parameterType="com.ely.domain.ProductTypeExample" resultMap="BaseResultMap">
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.ely.domain.ProductType">
     insert into product_type (ptid, ptname, ptlevel, 
-      fparentlevel)
+      fparentlevel, add_time)
     values (#{ptid,jdbcType=INTEGER}, #{ptname,jdbcType=VARCHAR}, #{ptlevel,jdbcType=INTEGER}, 
-      #{fparentlevel,jdbcType=INTEGER})
+      #{fparentlevel,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.ely.domain.ProductType">
     insert into product_type
@@ -119,6 +120,9 @@
       <if test="fparentlevel != null">
         fparentlevel,
       </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="ptid != null">
@@ -132,6 +136,9 @@
       </if>
       <if test="fparentlevel != null">
         #{fparentlevel,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -156,6 +163,9 @@
       <if test="record.fparentlevel != null">
         fparentlevel = #{record.fparentlevel,jdbcType=INTEGER},
       </if>
+      <if test="record.addTime != null">
+        add_time = #{record.addTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +176,8 @@
     set ptid = #{record.ptid,jdbcType=INTEGER},
       ptname = #{record.ptname,jdbcType=VARCHAR},
       ptlevel = #{record.ptlevel,jdbcType=INTEGER},
-      fparentlevel = #{record.fparentlevel,jdbcType=INTEGER}
+      fparentlevel = #{record.fparentlevel,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +194,9 @@
       <if test="fparentlevel != null">
         fparentlevel = #{fparentlevel,jdbcType=INTEGER},
       </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where ptid = #{ptid,jdbcType=INTEGER}
   </update>
@@ -190,7 +204,8 @@
     update product_type
     set ptname = #{ptname,jdbcType=VARCHAR},
       ptlevel = #{ptlevel,jdbcType=INTEGER},
-      fparentlevel = #{fparentlevel,jdbcType=INTEGER}
+      fparentlevel = #{fparentlevel,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP}
     where ptid = #{ptid,jdbcType=INTEGER}
   </update>
 </mapper>

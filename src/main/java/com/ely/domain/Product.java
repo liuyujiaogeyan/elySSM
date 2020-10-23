@@ -2,10 +2,11 @@ package com.ely.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class Product {
+public class Product implements Serializable {
     private Integer pid;
 
     private String pname;

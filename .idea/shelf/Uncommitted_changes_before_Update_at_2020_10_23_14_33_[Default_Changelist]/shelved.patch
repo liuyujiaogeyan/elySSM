@@ -1,0 +1,508 @@
+Index: src/main/java/com/ely/domain/ProductType.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ely.domain;\r\n\r\nimport lombok.Data;\r\n\r\n@Data\r\npublic class ProductType {\r\n    private Integer ptid;\r\n\r\n    private String ptname;\r\n\r\n    private Integer ptlevel;\r\n\r\n    private Integer fparentlevel;\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/ely/domain/ProductType.java	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ src/main/java/com/ely/domain/ProductType.java	(date 1603422755107)
+@@ -2,8 +2,10 @@
+ 
+ import lombok.Data;
+ 
++import java.io.Serializable;
++
+ @Data
+-public class ProductType {
++public class ProductType implements Serializable {
+     private Integer ptid;
+ 
+     private String ptname;
+Index: src/main/java/com/ely/domain/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ely.domain;\r\n\r\nimport lombok.Data;\r\n\r\nimport java.util.Date;\r\n\r\n@Data\r\npublic class User {\r\n    private Integer uid;\r\n\r\n    private String username;\r\n\r\n    private String password;\r\n\r\n    private Date addTime;\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/ely/domain/User.java	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ src/main/java/com/ely/domain/User.java	(date 1603422755147)
+@@ -2,10 +2,11 @@
+ 
+ import lombok.Data;
+ 
++import java.io.Serializable;
+ import java.util.Date;
+ 
+ @Data
+-public class User {
++public class User implements Serializable {
+     private Integer uid;
+ 
+     private String username;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"elySSM:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"6a7eb9e7-da34-481c-9b3d-73cfeb5db75e\" name=\"Default Changelist\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/CusAddressService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/CustomerSerivce.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/EventService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/OrdersService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/ProductService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/ProductTypeService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/SellerService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/SeventService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/impl/CusAddressServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/impl/CustomerSerivceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/impl/EventServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/impl/OrdersServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/impl/ProductServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/impl/ProductTypeServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/impl/SellerServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/service/impl/SeventServiceImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/e41885e8-d5c4-4255-bb20-f4c7ac1fb01a.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources/e41885e8-d5c4-4255-bb20-f4c7ac1fb01a.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/ely/domain/Customer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/domain/Customer.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/ely/domain/User.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/ely/domain/User.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/db.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/db.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/resources/mybatisGeneratorConf.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/resources/mybatisGeneratorConf.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/applicationContext.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/customValidationMessages.properties\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/db.properties\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/log4j.properties\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/mybatis.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/springmvc.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/ssm/META-INF/MANIFEST.MF\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/ssm/META-INF/MANIFEST.MF\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/ssm/WEB-INF/classes/db.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/ssm/WEB-INF/classes/db.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/test-classes/db.sql\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/test-classes/db.sql\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/test-classes/mybatisGeneratorConf.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/test-classes/mybatisGeneratorConf.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHome\" value=\"D:\\idea\\ideaIU-2020.2.1.win\\plugins\\maven\\lib\\maven3\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1jDGKLAKU3BqWmBOqe2BalMwTfq\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"DatabaseDriversLRU\" value=\"mysql\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../ideaworkspace\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.ely.service\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Tomcat Server.Tomcat 9.0.37\">\r\n    <configuration name=\"MBGR\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.ely.init.MBGR\" />\r\n      <module name=\"elySSM\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.ely.init.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"ArquillianTestNG\" factoryName=\"\" nameIsGenerated=\"true\">\r\n      <option name=\"arquillianRunConfiguration\">\r\n        <value>\r\n          <option name=\"containerStateName\" value=\"\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"TEST_OBJECT\" value=\"CLASS\" />\r\n      <properties />\r\n      <listeners />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Tomcat 9.0.37\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 9.0.37\" ALTERNATIVE_JRE_ENABLED=\"false\" nameIsGenerated=\"true\">\r\n      <option name=\"OPEN_IN_BROWSER_URL\" value=\"http://localhost:8080/elySSM_war_exploded/\" />\r\n      <option name=\"BROWSER_ID\" value=\"98ca6316-2f89-46d9-a9e5-fa9e2b0625b3\" />\r\n      <option name=\"UPDATE_ON_FRAME_DEACTIVATION\" value=\"true\" />\r\n      <option name=\"UPDATE_CLASSES_ON_FRAME_DEACTIVATION\" value=\"true\" />\r\n      <deployment>\r\n        <artifact name=\"elySSM:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/elySSM_war_exploded\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"Unnamed_elySSM_3\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"51651\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"elySSM:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.MBGR\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"6a7eb9e7-da34-481c-9b3d-73cfeb5db75e\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1603331184121</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1603331184121</updated>\r\n      <workItem from=\"1603331185489\" duration=\"2237000\" />\r\n      <workItem from=\"1603336723440\" duration=\"15061000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"包名修改,数据库创建\">\r\n      <created>1603337955276</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1603337955276</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"包名修改,数据库创建\">\r\n      <created>1603337986960</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1603337986960</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"数据库创建\">\r\n      <created>1603351545301</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1603351545301</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT\" value=\"false\" />\r\n    <option name=\"CHECK_NEW_TODO\" value=\"false\" />\r\n    <MESSAGE value=\"包名修改,数据库创建\" />\r\n    <MESSAGE value=\"数据库创建\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"数据库创建\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"174\" y=\"87\" width=\"1092\" height=\"718\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog\" timestamp=\"1603337632381\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"174\" y=\"87\" width=\"1092\" height=\"718\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860@0.0.1440.860\" timestamp=\"1603337632381\" />\r\n    <state x=\"488\" y=\"72\" key=\"#com.intellij.ide.util.MemberChooser\" timestamp=\"1603380494921\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state x=\"488\" y=\"72\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728\" timestamp=\"1603380494921\" />\r\n    <state x=\"259\" y=\"0\" key=\"CommitChangelistDialog2\" timestamp=\"1603351543388\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"259\" y=\"0\" key=\"CommitChangelistDialog2/0.0.1440.860@0.0.1440.860\" timestamp=\"1603351543388\" />\r\n    <state x=\"500\" y=\"187\" key=\"FileChooserDialogImpl\" timestamp=\"1603348486818\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"500\" y=\"187\" key=\"FileChooserDialogImpl/0.0.1440.860@0.0.1440.860\" timestamp=\"1603348486818\" />\r\n    <state width=\"1323\" height=\"145\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1603378601416\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"1323\" height=\"145\" key=\"GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728\" timestamp=\"1603378601416\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860\" timestamp=\"1603358213452\" />\r\n    <state width=\"1323\" height=\"145\" key=\"GridCell.Tab.0.center\" timestamp=\"1603378601416\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"1323\" height=\"145\" key=\"GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728\" timestamp=\"1603378601416\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860\" timestamp=\"1603358213452\" />\r\n    <state width=\"1323\" height=\"145\" key=\"GridCell.Tab.0.left\" timestamp=\"1603378601415\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"1323\" height=\"145\" key=\"GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728\" timestamp=\"1603378601415\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860\" timestamp=\"1603358213452\" />\r\n    <state width=\"1323\" height=\"145\" key=\"GridCell.Tab.0.right\" timestamp=\"1603378601416\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"1323\" height=\"145\" key=\"GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728\" timestamp=\"1603378601416\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860\" timestamp=\"1603358213452\" />\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.1.bottom\" timestamp=\"1603374706407\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728\" timestamp=\"1603374706407\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.1.center\" timestamp=\"1603374706407\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728\" timestamp=\"1603374706407\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.1.left\" timestamp=\"1603374706407\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728\" timestamp=\"1603374706407\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.1.right\" timestamp=\"1603374706407\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728\" timestamp=\"1603374706407\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.2.bottom\" timestamp=\"1603374706407\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728\" timestamp=\"1603374706407\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.bottom/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739726\" />\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.2.center\" timestamp=\"1603374706407\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728\" timestamp=\"1603374706407\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.center/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.2.left\" timestamp=\"1603374706407\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728\" timestamp=\"1603374706407\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.left/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.2.right\" timestamp=\"1603374706407\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state width=\"905\" height=\"174\" key=\"GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728\" timestamp=\"1603374706407\" />\r\n    <state width=\"937\" height=\"94\" key=\"GridCell.Tab.2.right/0.0.1440.860@0.0.1440.860\" timestamp=\"1603357739725\" />\r\n    <state x=\"312\" y=\"165\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1603351550886\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"312\" y=\"165\" key=\"Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860\" timestamp=\"1603351550886\" />\r\n    <state x=\"575\" y=\"270\" width=\"332\" height=\"229\" key=\"com.intellij.database.actions.DdlActions$DeleteProvider2$1\" timestamp=\"1603372293094\">\r\n      <screen x=\"0\" y=\"0\" width=\"1366\" height=\"728\" />\r\n    </state>\r\n    <state x=\"575\" y=\"270\" width=\"332\" height=\"229\" key=\"com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1366.728@0.0.1366.728\" timestamp=\"1603372293094\" />\r\n    <state x=\"606\" y=\"319\" width=\"332\" height=\"231\" key=\"com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1440.860@0.0.1440.860\" timestamp=\"1603350944672\" />\r\n    <state x=\"555\" y=\"208\" key=\"com.intellij.database.view.ui.AbstractDbRefactoringDialog\" timestamp=\"1603354258362\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"555\" y=\"208\" key=\"com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1440.860@0.0.1440.860\" timestamp=\"1603354258362\" />\r\n    <state x=\"525\" y=\"345\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1603331193841\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"525\" y=\"345\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860\" timestamp=\"1603331193841\" />\r\n    <state x=\"383\" y=\"180\" width=\"672\" height=\"678\" key=\"search.everywhere.popup\" timestamp=\"1603350027121\">\r\n      <screen x=\"0\" y=\"0\" width=\"1440\" height=\"860\" />\r\n    </state>\r\n    <state x=\"383\" y=\"180\" width=\"672\" height=\"678\" key=\"search.everywhere.popup/0.0.1440.860@0.0.1440.860\" timestamp=\"1603350027121\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/test/java/com/ely/init/MBGR.java</url>\r\n          <line>29</line>\r\n          <properties class=\"com.ely.init.MBGR\" method=\"main\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ .idea/workspace.xml	(date 1603434806603)
+@@ -28,39 +28,25 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="6a7eb9e7-da34-481c-9b3d-73cfeb5db75e" name="Default Changelist" comment="">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/CusAddressService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/CustomerSerivce.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/EventService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/OrdersService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/ProductService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/ProductTypeService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/SellerService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/SeventService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/impl/CusAddressServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/impl/CustomerSerivceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/impl/EventServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/impl/OrdersServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/impl/ProductServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/impl/ProductTypeServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/impl/SellerServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ely/service/impl/SeventServiceImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e41885e8-d5c4-4255-bb20-f4c7ac1fb01a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e41885e8-d5c4-4255-bb20-f4c7ac1fb01a.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_10_22_18_18__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_10_22_18_18__Default_Changelist_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_00__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_00__Default_Changelist_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_01__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_01__Default_Changelist_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_02__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_02__Default_Changelist_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_35__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_35__Default_Changelist_1.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/CusAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/CusAddress.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/Customer.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/Event.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/Orders.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/Product.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/ProductType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/ProductType.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/Seller.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/Sevent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/Sevent.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/ely/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ely/domain/User.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/resources/mybatisGeneratorConf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/mybatisGeneratorConf.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/customValidationMessages.properties" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/db.properties" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/springmvc.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db.properties" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/ssm/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/META-INF/MANIFEST.MF" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/db.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/test-classes/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/db.sql" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/test-classes/mybatisGeneratorConf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/mybatisGeneratorConf.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -128,19 +114,6 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+-      <option name="arquillianRunConfiguration">
+-        <value>
+-          <option name="containerStateName" value="" />
+-        </value>
+-      </option>
+-      <option name="TEST_OBJECT" value="CLASS" />
+-      <properties />
+-      <listeners />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+     <configuration name="Tomcat 9.0.37" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.37" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/elySSM_war_exploded/" />
+       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+@@ -232,6 +205,7 @@
+       <updated>1603331184121</updated>
+       <workItem from="1603331185489" duration="2237000" />
+       <workItem from="1603336723440" duration="15061000" />
++      <workItem from="1603421908086" duration="4367000" />
+     </task>
+     <task id="LOCAL-00001" summary="包名修改,数据库创建">
+       <created>1603337955276</created>
+@@ -254,7 +228,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1603351545301</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="1">
++      <created>1603422169524</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1603422169524</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -270,13 +251,15 @@
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+     <option name="CHECK_NEW_TODO" value="false" />
+     <MESSAGE value="包名修改,数据库创建" />
+     <MESSAGE value="数据库创建" />
+-    <option name="LAST_COMMIT_MESSAGE" value="数据库创建" />
++    <MESSAGE value="1" />
++    <option name="LAST_COMMIT_MESSAGE" value="1" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="174" y="87" width="1092" height="718" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603337632381">
+@@ -295,66 +278,66 @@
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state x="500" y="187" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1603348486818" />
+-    <state width="1323" height="145" key="GridCell.Tab.0.bottom" timestamp="1603378601416">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.0.bottom" timestamp="1603425882790">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="1323" height="145" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603378601416" />
+-    <state width="937" height="94" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603358213452" />
+-    <state width="1323" height="145" key="GridCell.Tab.0.center" timestamp="1603378601416">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603425882790" />
++    <state width="1123" height="116" key="GridCell.Tab.0.center" timestamp="1603425882790">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="1323" height="145" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603378601416" />
+-    <state width="937" height="94" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603358213452" />
+-    <state width="1323" height="145" key="GridCell.Tab.0.left" timestamp="1603378601415">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603425882790" />
++    <state width="1123" height="116" key="GridCell.Tab.0.left" timestamp="1603425882790">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="1323" height="145" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603378601415" />
+-    <state width="937" height="94" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603358213452" />
+-    <state width="1323" height="145" key="GridCell.Tab.0.right" timestamp="1603378601416">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603425882790" />
++    <state width="1123" height="116" key="GridCell.Tab.0.right" timestamp="1603425882790">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="1323" height="145" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603378601416" />
+-    <state width="937" height="94" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603358213452" />
+-    <state width="905" height="174" key="GridCell.Tab.1.bottom" timestamp="1603374706407">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603425882790" />
++    <state width="1123" height="116" key="GridCell.Tab.1.bottom" timestamp="1603425741604">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="905" height="174" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603374706407" />
+-    <state width="937" height="94" key="GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="905" height="174" key="GridCell.Tab.1.center" timestamp="1603374706407">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.1.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603425741604" />
++    <state width="1123" height="116" key="GridCell.Tab.1.center" timestamp="1603425741603">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="905" height="174" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1603374706407" />
+-    <state width="937" height="94" key="GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="905" height="174" key="GridCell.Tab.1.left" timestamp="1603374706407">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.1.center/0.0.1440.860@0.0.1440.860" timestamp="1603425741603" />
++    <state width="1123" height="116" key="GridCell.Tab.1.left" timestamp="1603425741603">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="905" height="174" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1603374706407" />
+-    <state width="937" height="94" key="GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="905" height="174" key="GridCell.Tab.1.right" timestamp="1603374706407">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.1.left/0.0.1440.860@0.0.1440.860" timestamp="1603425741603" />
++    <state width="1123" height="116" key="GridCell.Tab.1.right" timestamp="1603425741604">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="905" height="174" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1603374706407" />
+-    <state width="937" height="94" key="GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="905" height="174" key="GridCell.Tab.2.bottom" timestamp="1603374706407">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.1.right/0.0.1440.860@0.0.1440.860" timestamp="1603425741604" />
++    <state width="1123" height="116" key="GridCell.Tab.2.bottom" timestamp="1603425741604">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="905" height="174" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603374706407" />
+-    <state width="937" height="94" key="GridCell.Tab.2.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603357739726" />
+-    <state width="905" height="174" key="GridCell.Tab.2.center" timestamp="1603374706407">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.2.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603425741604" />
++    <state width="1123" height="116" key="GridCell.Tab.2.center" timestamp="1603425741604">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="905" height="174" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1603374706407" />
+-    <state width="937" height="94" key="GridCell.Tab.2.center/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="905" height="174" key="GridCell.Tab.2.left" timestamp="1603374706407">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.2.center/0.0.1440.860@0.0.1440.860" timestamp="1603425741604" />
++    <state width="1123" height="116" key="GridCell.Tab.2.left" timestamp="1603425741604">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="905" height="174" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1603374706407" />
+-    <state width="937" height="94" key="GridCell.Tab.2.left/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
+-    <state width="905" height="174" key="GridCell.Tab.2.right" timestamp="1603374706407">
+-      <screen x="0" y="0" width="1366" height="728" />
++    <state width="1123" height="116" key="GridCell.Tab.2.left/0.0.1440.860@0.0.1440.860" timestamp="1603425741604" />
++    <state width="1123" height="116" key="GridCell.Tab.2.right" timestamp="1603425741604">
++      <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state width="905" height="174" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1603374706407" />
+-    <state width="937" height="94" key="GridCell.Tab.2.right/0.0.1440.860@0.0.1440.860" timestamp="1603357739725" />
++    <state width="1123" height="116" key="GridCell.Tab.2.right/0.0.1440.860@0.0.1440.860" timestamp="1603425741604" />
+     <state x="312" y="165" key="Vcs.Push.Dialog.v2" timestamp="1603351550886">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+@@ -368,10 +351,10 @@
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+     <state x="555" y="208" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1440.860@0.0.1440.860" timestamp="1603354258362" />
+-    <state x="525" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603331193841">
++    <state x="525" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603434806551">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+-    <state x="525" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1603331193841" />
++    <state x="525" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1603434806551" />
+     <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1603350027121">
+       <screen x="0" y="0" width="1440" height="860" />
+     </state>
+Index: src/main/java/com/ely/domain/CusAddress.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ely.domain;\r\n\r\nimport lombok.Data;\r\n\r\nimport java.util.Date;\r\n\r\n@Data\r\npublic class CusAddress {\r\n    private Integer aid;\r\n\r\n    private String content;\r\n\r\n    private Integer fcid;\r\n\r\n    private Date addTime;\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/ely/domain/CusAddress.java	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ src/main/java/com/ely/domain/CusAddress.java	(date 1603422755170)
+@@ -2,10 +2,11 @@
+ 
+ import lombok.Data;
+ 
++import java.io.Serializable;
+ import java.util.Date;
+ 
+ @Data
+-public class CusAddress {
++public class CusAddress implements Serializable {
+     private Integer aid;
+ 
+     private String content;
+Index: src/main/java/com/ely/domain/Seller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ely.domain;\r\n\r\nimport lombok.Data;\r\n\r\nimport java.util.Date;\r\n\r\n@Data\r\npublic class Seller {\r\n    private Integer sid;\r\n\r\n    private String sname;\r\n\r\n    private String spassword;\r\n\r\n    private String simg;\r\n\r\n    private Double mark;\r\n\r\n    private Integer hid;\r\n\r\n    private String express;\r\n\r\n    private Boolean recommend;\r\n\r\n    private Date addTime;\r\n\r\n    private String address;\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/ely/domain/Seller.java	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ src/main/java/com/ely/domain/Seller.java	(date 1603422755195)
+@@ -2,10 +2,11 @@
+ 
+ import lombok.Data;
+ 
++import java.io.Serializable;
+ import java.util.Date;
+ 
+ @Data
+-public class Seller {
++public class Seller implements Serializable {
+     private Integer sid;
+ 
+     private String sname;
+Index: src/main/java/com/ely/domain/Orders.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ely.domain;\r\n\r\nimport lombok.Data;\r\n\r\nimport java.util.Date;\r\n\r\n@Data\r\npublic class Orders {\r\n    private Integer oid;\r\n\r\n    private Integer ocount;\r\n\r\n    private Integer oamountStatus;\r\n\r\n    private String receivename;\r\n\r\n    private String receiveaddress;\r\n\r\n    private String receivetel;\r\n\r\n    private Date addTime;\r\n\r\n    private Integer fcid;\r\n\r\n    private Integer fpid;\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/ely/domain/Orders.java	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ src/main/java/com/ely/domain/Orders.java	(date 1603422755208)
+@@ -2,10 +2,11 @@
+ 
+ import lombok.Data;
+ 
++import java.io.Serializable;
+ import java.util.Date;
+ 
+ @Data
+-public class Orders {
++public class Orders implements Serializable {
+     private Integer oid;
+ 
+     private Integer ocount;
+Index: src/main/java/com/ely/domain/Event.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ely.domain;\r\n\r\nimport lombok.Data;\r\n\r\nimport java.util.Date;\r\n\r\n@Data\r\npublic class Event {\r\n    private Integer eid;\r\n\r\n    private String ename;\r\n\r\n    private String edesc;\r\n\r\n    private Date addTime;\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/ely/domain/Event.java	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ src/main/java/com/ely/domain/Event.java	(date 1603422755184)
+@@ -2,10 +2,11 @@
+ 
+ import lombok.Data;
+ 
++import java.io.Serializable;
+ import java.util.Date;
+ 
+ @Data
+-public class Event {
++public class Event implements Serializable {
+     private Integer eid;
+ 
+     private String ename;
+Index: target/ssm/META-INF/MANIFEST.MF
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Manifest-Version: 1.0\r\nCreated-By: IntelliJ IDEA\r\nBuilt-By: DELL\r\nBuild-Jdk: 11.0.5\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- target/ssm/META-INF/MANIFEST.MF	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ target/ssm/META-INF/MANIFEST.MF	(date 1603424201019)
+@@ -1,5 +1,5 @@
+ Manifest-Version: 1.0
+ Created-By: IntelliJ IDEA
+-Built-By: DELL
++Built-By: neustu
+ Build-Jdk: 11.0.5
+ 
+Index: src/main/java/com/ely/domain/Customer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ely.domain;\r\n\r\nimport lombok.Data;\r\n\r\nimport java.util.Date;\r\n\r\n@Data\r\npublic class Customer {\r\n    private Integer cid;\r\n\r\n    private String cname;\r\n\r\n    private String cphone;\r\n\r\n    private String cemail;\r\n\r\n    private String cpass;\r\n\r\n    private Date cbirth;\r\n\r\n    private String cavatar;\r\n\r\n    private Boolean cgender;\r\n\r\n    private Boolean cstatus;\r\n\r\n    private Date addTime;\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/ely/domain/Customer.java	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ src/main/java/com/ely/domain/Customer.java	(date 1603422755121)
+@@ -2,10 +2,11 @@
+ 
+ import lombok.Data;
+ 
++import java.io.Serializable;
+ import java.util.Date;
+ 
+ @Data
+-public class Customer {
++public class Customer implements Serializable {
+     private Integer cid;
+ 
+     private String cname;
+Index: src/main/java/com/ely/domain/Sevent.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ely.domain;\r\n\r\nimport lombok.Data;\r\n\r\nimport java.util.Date;\r\n\r\n@Data\r\npublic class Sevent {\r\n    private Integer id;\r\n\r\n    private Integer sid;\r\n\r\n    private Integer eid;\r\n\r\n    private Date addTime;\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/ely/domain/Sevent.java	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ src/main/java/com/ely/domain/Sevent.java	(date 1603422755157)
+@@ -2,10 +2,11 @@
+ 
+ import lombok.Data;
+ 
++import java.io.Serializable;
+ import java.util.Date;
+ 
+ @Data
+-public class Sevent {
++public class Sevent implements Serializable {
+     private Integer id;
+ 
+     private Integer sid;
+Index: target/classes/db.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>jdbc.driverClass=com.mysql.jdbc.Driver\r\njdbc.jdbcUrl=jdbc:mysql://localhost:3306/java6ssm\r\njdbc.user=root\r\njdbc.password=root
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>NATIVE_TO_ASCII_UTF-8
+===================================================================
+--- target/classes/db.properties	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ target/classes/db.properties	(date 1603422486119)
+@@ -1,4 +1,4 @@
+ jdbc.driverClass=com.mysql.jdbc.Driver
+ jdbc.jdbcUrl=jdbc:mysql://localhost:3306/java6ssm
+ jdbc.user=root
+-jdbc.password=root
+\ No newline at end of file
++jdbc.password=mysql
+\ No newline at end of file
+Index: src/main/resources/db.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>jdbc.driverClass=com.mysql.jdbc.Driver\r\njdbc.jdbcUrl=jdbc:mysql://localhost:3306/java6ssm\r\njdbc.user=root\r\njdbc.password=root
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>NATIVE_TO_ASCII_UTF-8
+===================================================================
+--- src/main/resources/db.properties	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ src/main/resources/db.properties	(date 1603422486119)
+@@ -1,4 +1,4 @@
+ jdbc.driverClass=com.mysql.jdbc.Driver
+ jdbc.jdbcUrl=jdbc:mysql://localhost:3306/java6ssm
+ jdbc.user=root
+-jdbc.password=root
+\ No newline at end of file
++jdbc.password=mysql
+\ No newline at end of file
+Index: src/main/java/com/ely/domain/Product.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ely.domain;\r\n\r\nimport lombok.Data;\r\n\r\nimport java.util.Date;\r\n\r\n@Data\r\npublic class Product {\r\n    private Integer pid;\r\n\r\n    private String pname;\r\n\r\n    private String pimg;\r\n\r\n    private String pdesc;\r\n\r\n    private Double price;\r\n\r\n    private Integer tid;\r\n\r\n    private Date addTime;\r\n\r\n    private Integer fsid;\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/ely/domain/Product.java	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ src/main/java/com/ely/domain/Product.java	(date 1603422755135)
+@@ -2,10 +2,11 @@
+ 
+ import lombok.Data;
+ 
++import java.io.Serializable;
+ import java.util.Date;
+ 
+ @Data
+-public class Product {
++public class Product implements Serializable {
+     private Integer pid;
+ 
+     private String pname;
+Index: target/ssm/WEB-INF/classes/db.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>jdbc.driverClass=com.mysql.jdbc.Driver\r\njdbc.jdbcUrl=jdbc:mysql://localhost:3306/java6ssm\r\njdbc.user=root\r\njdbc.password=root
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>NATIVE_TO_ASCII_UTF-8
+===================================================================
+--- target/ssm/WEB-INF/classes/db.properties	(revision 06e9c058ccc66e90fda0e904d6a6dc66f8ceef61)
++++ target/ssm/WEB-INF/classes/db.properties	(date 1603422486119)
+@@ -1,4 +1,4 @@
+ jdbc.driverClass=com.mysql.jdbc.Driver
+ jdbc.jdbcUrl=jdbc:mysql://localhost:3306/java6ssm
+ jdbc.user=root
+-jdbc.password=root
+\ No newline at end of file
++jdbc.password=mysql
+\ No newline at end of file
+diff --git .idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_00__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_00__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_01__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_01__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Update_at_2020_10_22_18_18__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_2020_10_22_18_18__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_35__Default_Changelist_1.xml .idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_35__Default_Changelist_1.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_02__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_2020_10_23_9_02__Default_Changelist_.xml
