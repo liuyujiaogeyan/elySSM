@@ -36,11 +36,32 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--        6 指定数据表的生成策略-->
-        <table tableName="adminuser" domainObjectName="User">
-            <ignoreColumn column="up_time"></ignoreColumn>
-        </table>
-        <table tableName="customer" domainObjectName="Customer">
-            <!--            忽略部分字段的生成-->
+<!--        <table tableName="adminuser" domainObjectName="User">-->
+<!--            <ignoreColumn column="up_time"></ignoreColumn>-->
+<!--        </table>-->
+<!--        <table tableName="customer" domainObjectName="Customer">-->
+<!--            &lt;!&ndash;            忽略部分字段的生成&ndash;&gt;-->
+<!--            <ignoreColumn column="up_time"></ignoreColumn>-->
+<!--        </table>-->
+<!--        <table tableName="customer_address" domainObjectName="CusAddress">-->
+<!--            <ignoreColumn column="up_time"></ignoreColumn>-->
+<!--        </table>-->
+<!--        <table tableName="event" domainObjectName="Event">-->
+<!--            <ignoreColumn column="up_time"></ignoreColumn>-->
+<!--        </table>-->
+<!--        <table tableName="orders" domainObjectName="Orders">-->
+<!--            <ignoreColumn column="up_time"></ignoreColumn>-->
+<!--        </table>-->
+<!--        <table tableName="product" domainObjectName="Product">-->
+<!--            <ignoreColumn column="up_time"></ignoreColumn>-->
+<!--        </table>-->
+<!--        <table tableName="product_type" domainObjectName="ProductType">-->
+<!--            <ignoreColumn column="up_time"></ignoreColumn>-->
+<!--        </table>-->
+<!--        <table tableName="seller" domainObjectName="Seller">-->
+<!--            <ignoreColumn column="up_time"></ignoreColumn>-->
+<!--        </table>-->
+        <table tableName="sevent" domainObjectName="Sevent">
             <ignoreColumn column="up_time"></ignoreColumn>
         </table>
     </context>
