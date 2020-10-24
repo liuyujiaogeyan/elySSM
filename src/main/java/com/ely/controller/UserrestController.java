@@ -1,10 +1,10 @@
 package com.ely.controller;
 
 import com.ely.domain.User;
-import com.ely.domain.UserCondition;
 import com.ely.domain.UserExample;
 import com.ely.service.UserService;
 import com.ely.utils.MessageAndData;
+import com.ely.vo.UserCondition;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +49,7 @@ public class UserrestController {
             criteria.andUsernameLike(userName);
         }
 
-        Integer uidC = userCondition.getUidCondition();
+        Integer uidC = userCondition.getUidCondtion();
         if(uidC!=null && uidC!=-1 && userCondition.getUid()!=null){//不限定条件
             if(uidC == 0){
                 criteria.andUidGreaterThan(userCondition.getUid());
@@ -62,11 +62,10 @@ public class UserrestController {
             }
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date startDate1 = dateFormat.parse("1970-01-01");
-        Date endDate1 = dateFormat.parse("2999-12-31");
+        Date startDate1 = new Date(Long.MIN_VALUE);
+        Date endDate1 = new Date(Long.MAX_VALUE);
 
-        Date startDate = userCondition.getStartDate()==null?startDate1:userCondition.getStartDate();
+        Date startDate = userCondition.getStratDate()==null?startDate1:userCondition.getStratDate();
         Date endDate = userCondition.getEndDate()==null?endDate1:userCondition.getEndDate();
         if(startDate.after(endDate)){
             Date tempDate = startDate;
@@ -141,7 +140,4 @@ public class UserrestController {
             return MessageAndData.error("修改失败");
         }
     }
-
-
-
 }

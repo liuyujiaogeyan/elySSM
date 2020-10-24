@@ -1,0 +1,15 @@
+{
+   "userrest": {
+     "uid": "用户代码",
+     "password": "密码",
+     "username": "姓名",
+     "addTime": "创建时间"
+   },
+    "productTypes":{
+        "ptid":"分类代码",
+        "ptname": "分类名称",
+        "ptlevel": "分类等级",
+        "fparentlevel": "上级分类",
+        "addTime": "创建时间"
+    }
+}

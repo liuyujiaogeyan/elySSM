@@ -72,7 +72,7 @@
     <bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource">
         <property name="basenames">
             <list>
-                <value>classpath:customValidationMessages</value>
+                <value>customValidationMessages</value>
             </list>
         </property>
         <!--        资源文件编码-->
@@ -92,5 +92,5 @@
                            validator="localValidatorFactoryBean"></mvc:annotation-driven>
 
     <!--    6 全局异常处理器,初期代码调试的阶段请将此关闭,尽量让问题暴露出来-->
-    <bean class="com.ely.exception.CustomExceptionResolver" id="customExceptionResolver"></bean>
+    <!--<bean class="com.ely.exception.CustomExceptionResolver" id="customExceptionResolver"></bean>-->
 </beans>

@@ -1,0 +1,26 @@
+模块      :admin 管理员模块
+主路径     :${app}/admin
+主体技术    : html css js bootstript jQuer
+工程师     :刘玉娇 , 吴守重
+
+条件检索:
+    检索条件数据
+        通过json数据填充结构
+            数据结构
+                name
+                type
+                defaultvalue
+                placeholder
+       通过显示隐藏控制
+    检索内容判断
+
+
+动态表格
+    动态表头
+        ajax请求静态json文件 ${app}/static/admin/json/thead.json
+        从json文件中读取数据
+        生成html代码
+        从第3列开始添加
+     动态数据
+
+     动态弹出框

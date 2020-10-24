@@ -16,7 +16,7 @@
 <head>
     <title>后台管理</title>
     <meta charset="UTF-8"/>
-    <base target="_self" />
+    <base target="_self"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- 引入 Bootstrap -->
     <link href="${app}/static/css/bootstrap.css" rel="stylesheet"/>
@@ -34,10 +34,14 @@
 <body>
 当前登录用户:${USER_SESSION}
 <a href="${app}/user/logout">退出登录</a>
-<hr />
+<hr/>
 <a href="${app}/user/list">用户管理</a>
-<a href="${app}/userrest/list">用户管理REST</a>
-<hr />
+<button onclick="setBackUrl('${app}/userrest/list')">>用户管理REST</button>
+<button onclick="setBackUrl('${app}/productTypes/list')">>商品分类REST</button>
+<hr/>
+
+<!--提示消息框-->
+<div class="alert"></div>
 <!-- 模态框 -->
 <div class="modal fade" id="addModal">
     <div class="modal-dialog">
@@ -53,14 +57,16 @@
                     <%--input type="hidden" name="_method" value="POST" /--%>
                     <div class="form-group">
                         <label for="usernameAddInput">username:</label>
-                        <input type="text" class="form-control" id="usernameAddInput" name="username" placeholder="请输入用户姓名"/>
+                        <input type="text" class="form-control" id="usernameAddInput" name="username"
+                               placeholder="请输入用户姓名"/>
                     </div>
                     <div id="usernameTips"></div>
                     <div class="form-group">
                         <label for="passwordAddInput">password:</label>
-                        <input type="password" class="form-control" id="passwordAddInput" name="password" placeholder="请输入密码">
+                        <input type="password" class="form-control" id="passwordAddInput" name="password"
+                               placeholder="请输入密码">
                     </div>
-                    
+
                     <div class="form-group">
                         <button id="addUserBtn" type="button" class="btn btn-block btn-primary">添加</button>
                     </div>
@@ -85,7 +91,7 @@
             <!-- 模态框主体 -->
             <div class="modal-body">
                 <form method="post" action="${app}/userrest/opt" class="form-horizontal" role="form">
-                    <input type="hidden" name="_method" value="PUT" />
+                    <input type="hidden" name="_method" value="PUT"/>
                     <div class="form-group">
                         <label for="uidUpdateInput">uid:</label>
                         <input type="text" readonly="readonly" class="form-control" id="uidUpdateInput" name="uid"
@@ -93,7 +99,8 @@
                     </div>
                     <div class="form-group">
                         <label for="usernameUpdateInput">姓名username:</label>
-                        <input type="text" readonly="readonly" class="form-control" id="usernameUpdateInput" name="username"
+                        <input type="text" readonly="readonly" class="form-control" id="usernameUpdateInput"
+                               name="username"
                                placeholder="请输入用户姓名"/>
                     </div>
                     <div class="form-group">
@@ -101,7 +108,7 @@
                         <input type="password" class="form-control" id="passwordUpdateInput" name="password"
                                placeholder="请输入新密码">
                     </div>
-                    
+
                     <div class="form-group">
                         <button id="updateUserBtn" type="button" class="btn btn-block btn-primary">修改</button>
                     </div>
@@ -115,17 +122,20 @@
     </div>
 </div>
 
+
+
 <form id="searchForm" method="get" action="${app}/userrest/list">
-    <select id="ediCList" name="uidCondition">
+    <select id="uidList" name="uidCondition">
         <option selected="selected" value="-1">不限uid</option>
+        <option value="0">uid大于</option>
+        <option value="1">uid等于</option>
+        <option value="2">uid小于</option>
     </select>
 
-    <input name="uid" type="text" value="${userCondition.uid}" placeholder="uid"/>
-    <input type="text" placeholder="用户姓名" name="username" value="${userCondition.username}"/>
-    <input type="date" name="startDate"
-           value="<fmt:formatDate value="${userCondition.startDate}" pattern="yyyy-MM-dd"></fmt:formatDate>"/>
-    <input type="date" name="endDate"
-           value="<fmt:formatDate value="${userCondition.endDate}" pattern="yyyy-MM-dd"></fmt:formatDate>"/>
+    <input name="uid" type="text" value="" placeholder="uid"/>
+    <input type="text" placeholder="username" name="username" value=""/>
+    <input type="date" name="startDate" value="2020-10-01"/>
+    <input type="date" name="endDate" value="2020-11-12"/>
     <input class="btn btn-primary" type="button" id="searchBtn" value="查询"/>
 </form>
 <div>
@@ -134,26 +144,26 @@
     </button>
     <input class="btn btn-danger" type="button" id="deletesBtn" value="删除所选"/>
 </div>
-<table id="userTable" class="table table-striped table-bordered table-hover">
+
+
+<%-- 数据展示列表 --%>
+<table id="dataTable" class="table table-striped table-bordered table-hover">
     <thead>
     <tr class="bg-primary text-white">
         <th>
             <input type="checkbox" id="choiceToggle"/>
             <input class="btn btn-sm btn-warning" type="button" id="reverseBtn" value="反选"/>
         </th>
-        <th>序号#</th>
-        <th>用户id(uid)</th>
-        <th>姓名(username)</th>
-        <th>密码(password)</th>
-        <th>创建时间(addTime)</th>
-        <th>操作(修改)</th>
-        <th>操作(删除)</th>
+
     </tr>
     </thead>
     <tbody>
 
     </tbody>
 </table>
+
+
+
 <div class="row">
     <div id="pageList" class="col-12 col-md-8">
 
@@ -164,7 +174,7 @@
 </div>
 
 <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
-<script src="${app}/static/js/jquery-3.3.1.js" ></script>
+<script src="${app}/static/js/jquery-3.3.1.js"></script>
 <!-- 包括所有已编译的插件 -->
 <script src="${app}/static/js/bootstrap.js"></script>
 <script src="${app}/static/js/vue.js"></script>
@@ -173,12 +183,15 @@
 <script src="${app}/static/js/axios.js"></script>
 <script src="${app}/static/js/custom.js"></script>
 <script>
+    var currentPage=1;
+    var maxPages=1;
+    var backUrl = "${app}/userrest/list"
     $(function () {
+        //为了跳转页面方便,设置全局变量保存当前页和最大页码数
         //页面加载时向远端获取所有数据,页面定位在第1页
         // gotoPage(1,3);
         gotoPage();
-        //填充下拉列表
-        fillSelectList()
+
         //页面加载时给全选和反选按钮绑定事件
         mulCheck();
         //给查询按钮绑定事件
@@ -197,6 +210,16 @@
         $(document).on("click", ".delBtn", deleteSingleRecord);
     });
 
+
+
+    //
+    //设置后端访问url
+    function setBackUrl(backUrl){
+        this.backUrl = backUrl;
+        gotoPage();
+    }
+
+
     //修改信息时从远端获取数据并填入表单
     function updateForm(ele) {
         //打开模态框
@@ -208,6 +231,7 @@
             url: ele.target.href,
             type: "GET",
             success: function (result) {
+                //回填数据
                 $("#uidUpdateInput").val(result.dataZone.user.uid);
                 $("#usernameUpdateInput").val(result.dataZone.user.username);
                 $("#addTimeUpdateInput").val(new Date(result.dataZone.user.addTime).Format("yyyy-MM-dd"));
@@ -219,25 +243,31 @@
 
         return false;//取消超链接的默认跳转
     }
-    function search(){
+
+    function search() {
         //修改数据之前先进行数据校验
         //校验通过向服务器发送请求
         $.ajax({
-            url: "${app}/userrest/list",
+            //url: "${app}/userrest/list?startDate=2020-10-12&endDate=2020-10-13",
+            url: backUrl,
             type: "GET",
             data: $("#searchForm").serialize(),
             success: function (result) {
-                alert(result.message);
+                // alert(result.message);
                 gotoPage();//回到第一页
+                // parseDataAndShow(result);
+                //解析渲染分页条
+                // parsePageAndShow(result);
             },
             error: function (result) {
-                alert(result.message);
+                // alert(result.message);
+                alertTips(result.message,"alert-danger");
                 return false;
             }
         });
     }
     //提交用户修改的信息
-    function updateUser(){
+    function updateUser() {
         //修改数据之前先进行数据校验
         //校验通过向服务器发送请求
         $.ajax({
@@ -245,12 +275,14 @@
             type: "PUT",
             data: $("#updateModal form").serialize(),
             success: function (result) {
-                alert(result.message);
+                // alert(result.message);
                 $("#updateModal").modal("hide");//关闭模态框
-                gotoPage();//回到当前页面
+                gotoPage(currentPage);//回到当前页面
+                alertTips(result.message,"alert-success");
             },
             error: function (result) {
-                alert(result.message);
+                // alert(result.message);
+                alertTips(result.message,"alert-danger");
                 return false;
             }
         });
@@ -262,7 +294,6 @@
         //将表单中原有数据清空
         $("#addModal form").get(0).reset();
     }
-
     function addUser() {
         //添加数据之前先进行数据校验
         //校验通过向服务器发送请求
@@ -271,9 +302,10 @@
             type: "POST",
             data: $("#addModal form").serialize(),
             success: function (result) {
-                alert(result.message);
+                //alert(result.message);
                 $("#addModal").modal("hide");//关闭模态框
-                gotoPage(99999);//到最后一页,稍等再改
+                gotoPage(maxPages+1);//到最后一页,想想为什么要加1
+                alertTips(result.message,"alert-success");
             },
             error: function (result) {
                 alert(result.message);
@@ -281,26 +313,26 @@
             }
         });
     }
-
-    function deleteSingleRecord(ele){
+    function deleteSingleRecord(ele) {
         //询问是否删除
-        if(!confirm("真的删除"))
+        if (!confirm("真的删除"))
             return false;
         $.ajax({
             url: ele.target.href,
             type: "DELETE",
             success: function (result) {
-                alert(result.message);
-                alert(result.dataZone.num);
-                gotoPage();
+                // alert(result.message);
+                alertTips(result.message,"alert-success");
+                // alert(result.dataZone.num);
+                // alert(currentPage);
+                gotoPage(currentPage);
             },
             error: function (result) {
-                alert(result.message);
+                alertTips(result.message,"alert-danger");
             }
         });
         return false;
     }
-
     function deleteMuliRecord() {
         //点击删除所选按钮时删除多条记录
 
@@ -315,16 +347,18 @@
         uids = uids.substr(0, uids.length - 1);//去掉最后的一个 -
         usernames = usernames.substr(0, usernames.length - 1);//去掉最后的一个 ,
         //询问用户操作
-        if (confirm("是否删除username为" + uids + "的记录")) {
+        if (confirm("是否删除username为" + usernames + "的记录")) {
             // if(confirm("是否删除uid为"+uids+"的记录")){
             //向服务器发送请求,我们已经使用过get和post方法,这次使用最底层的ajax方法
             $.ajax({
                 type: "DELETE",
                 url: "${app}/userrest/opt/" + uids,
                 success: function (result) {
-                    alert(result);
+                    // alert(result.message);
                     // $(document).flush();//刷新当前页
-                    window.location.reload();
+                    // window.location.reload();
+                    gotoPage(currentPage);
+                    alertTips(result.message,"alert-success");
                 },
                 error: function () {
 
@@ -333,17 +367,50 @@
         }
     }
 
+    //页面数据请求
     function gotoPage(page, pageSize) {
         var page1 = page == null ? 1 : page;
         var pageSize1 = pageSize == null ? 10 : page;
+        //表明判断
+        var tableName="userList";
+        tableName = backUrl.substring("${app}/".length,backUrl.length);
+        tableName = tableName.substring(0,tableName.indexOf("/"));
+
+        //请求表头
+        let columns ;
         $.ajax({
             type: "GET",
-            url: "${app}/userrest/list",
+            url:"${app}/static/admin/json/tHead.json",
+            success:function(result) {
+                //匹配对应的表头
+                columns = result[tableName];
+                //删除表中的数据
+                $("#dataTable tbody").empty();
+                //构建表头
+                var thr = $("#dataTable thead tr");
+                var firthTh = thr.children().first();
+                firthTh.nextAll().remove();
+                thr.append($("<th>序号#</th>"));
+               for(let i in columns){
+                    thr.append($('<th></th>').text(columns[i]));
+                }
+                 thr.append($('<th>操作(修改)</th>'))
+                    .append($('<th>操作(删除)</th>'));
+            }
+        });
+
+        //请求数据
+        $.ajax({
+            type: "GET",
+            url: backUrl +"?pageNum=" + page1 + "&pageSize=" + pageSize1,
             dataType: "json",
-            data: "pageNum=" + page1 + "&pageSize=" + pageSize1,
+            // data: "pageNum=" + page1 + "&pageSize=" + pageSize1,
+            data: $("#searchForm").serialize(),
             success: function (result) {
                 // 解析返回的json数据并显示到界面中,封装为函数吧,太多东西了
-                parseDataAndShow(result);
+                currentPage = result.dataZone.pageInfo.pageNum;
+                maxPages = result.dataZone.pageInfo.pages;
+                parseDataAndShow(result,columns);
                 //解析渲染分页条
                 parsePageAndShow(result);
             },
@@ -353,28 +420,29 @@
         });
     }
 
-    function parseDataAndShow(result) {
-        $("#userTable tbody").empty();
+    function parseDataAndShow(result,columns) {
         // 获取数据集合
-        let users = result.dataZone.pageInfo.list;
-        $.each(users, function (index, item) {
+        var datas = result.dataZone.pageInfo.list;
+        $.each(datas, function (index, item) {
             //构建行
             var uTr = $("<tr></tr>");
             //构建多个单元格
             var checkboxTh = $('<th><input type="checkbox" name="choiceList" value="${item.uid}"/></th>');
             var countTh = $('<th></th>').text(index + 1);
-            var uidTd = $('<td></td>').text(item.uid);
-            var usernameTd = $('<td></td>').text(item.username);
-            var passwordTd = $('<td></td>').text(item.password);
-            var addTimeTd = $('<td></td>').text(new Date(item.addTime).Format("yyyy-MM-dd HH:mm:ss"));
+            uTr.append(checkboxTh).append(countTh);
+            for(let cloumn in columns){
+                if(cloumn == "addTime"){
+                    item[cloumn] = new Date(item.addTime).Format("yyyy-MM-dd HH:mm:ss");
+                }
+                uTr.append($('<td></td>').text(item[cloumn]));
+            }
             var upBtnTd = $('<td></td>').html('<a class="upBtn btn btn-info btn-sm" href="${app}/userrest/opt/' + item.uid + '">修改</a>');
             var delBtnTd = $('<td></td>').html('<a class="delBtn btn btn-danger btn-sm" href="${app}/userrest/opt/' + item.uid + '">删除</a>');
             //将单元格追加到行中
-            uTr.append(checkboxTh).append(countTh).append(uidTd)
-                .append(usernameTd).append(passwordTd).append(addTimeTd)
-                .append(upBtnTd).append(delBtnTd);
+
+            uTr.append(upBtnTd).append(delBtnTd);
             // 将行追加到表体中
-            $("#userTable tbody").append(uTr);
+            $("#dataTable tbody").append(uTr);
         });
     }
 
@@ -382,7 +450,6 @@
         //因为是不跨页面的刷新操作,所以操作前先清空当前节点内容
         $("#pageTips").empty();
         $("#pageList").empty();
-
         var pageInfo = result.dataZone.pageInfo;
         //构建分页信息
         $("#pageTips").html("共" + pageInfo.total + "条记录," + pageInfo.pages + "页,每页" + pageInfo.pageSize + "条");
@@ -404,7 +471,6 @@
             numLi.click(function () {
                 gotoPage(item);//跳转到指定页面
             });
-
             numLi.appendTo(oUl);
         });
 
@@ -472,30 +538,9 @@
         });
     }
 
-    //填充查询条件和部门列表的列表值
-    function fillSelectList() {
-        //页面加载时获取查询条件中所有的列表并填充到下拉列表中
-        $.post(
-            "${app}/userType/getTypes",
-            function (types) {
-                //处理返回的数据
-                for (var i = 0; i < types.length; i++) {
-                    if (types[i].tid == "${userCondition.ftid}")
-                        $("[data-list=typeList]").append("<option selected='selected' value='" + types[i].tid + "'>" + types[i].tname + "</option>");
-                    else
-                        $("[data-list=typeList]").append("<option  value='" + types[i].tid + "'>" + types[i].tname + "</option>");
-                }
-            }
-        );
-
-        //页面加载时获取查询条件中的uid前缀表达式填充到下拉列表中
-        var uidCd = ["大于", "等于", "小于"];
-        for (var i = 0; i < 3; i++) {
-            if (i == Number.parseInt("${userCondition.uidCondition}"))
-                $("#udiCList").append("<option selected='selected' value='" + i + "'>" + uidCd[i] + "</option>");
-            else
-                $("#udiCList").append("<option  value='" + i + "'>" + uidCd[i] + "</option>");
-        }
+    //完成后弹出消息框
+    function alertTips(message,alert_type){
+        $('.alert').html(message).addClass(alert_type).show().delay(1000).fadeOut();
     }
 
     //日期转换
@@ -523,7 +568,6 @@
     function parseISO8601(dateStringInRange) {
         var isoExp = /^\s*(\d{4})-(\d\d)-(\d\d)\s(\d\d):(\d\d)\s*$/, date = new Date(
             NaN), month, hour, min, parts = isoExp.exec(dateStringInRange);
-
         if (parts) {
             month = +parts[2];
             hour = +parts[4];
@@ -543,5 +587,20 @@
         return !isNaN(d.getTime());
     }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

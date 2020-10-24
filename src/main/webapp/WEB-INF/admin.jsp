@@ -36,7 +36,8 @@
 <a href="${app}/user/logout">退出登录</a>
 <hr/>
 <a href="${app}/user/list">用户管理</a>
-<a href="${app}/userrest/list">用户管理REST</a>
+<button onclick="setBackUrl('${app}/userrest/list')">>用户管理REST</button>
+<button onclick="setBackUrl('${app}/productTypes/list')">>商品分类REST</button>
 <hr/>
 
 <!--提示消息框-->
@@ -143,26 +144,26 @@
     </button>
     <input class="btn btn-danger" type="button" id="deletesBtn" value="删除所选"/>
 </div>
-<table id="userTable" class="table table-striped table-bordered table-hover">
+
+
+<%-- 数据展示列表 --%>
+<table id="dataTable" class="table table-striped table-bordered table-hover">
     <thead>
     <tr class="bg-primary text-white">
         <th>
             <input type="checkbox" id="choiceToggle"/>
             <input class="btn btn-sm btn-warning" type="button" id="reverseBtn" value="反选"/>
         </th>
-        <th>序号#</th>
-        <th>用户id(uid)</th>
-        <th>姓名(username)</th>
-        <th>密码(password)</th>
-        <th>创建时间(addTime)</th>
-        <th>操作(修改)</th>
-        <th>操作(删除)</th>
+
     </tr>
     </thead>
     <tbody>
 
     </tbody>
 </table>
+
+
+
 <div class="row">
     <div id="pageList" class="col-12 col-md-8">
 
@@ -184,11 +185,9 @@
 <script>
     var currentPage=1;
     var maxPages=1;
-
+    var backUrl = "${app}/userrest/list"
     $(function () {
         //为了跳转页面方便,设置全局变量保存当前页和最大页码数
-
-
         //页面加载时向远端获取所有数据,页面定位在第1页
         // gotoPage(1,3);
         gotoPage();
@@ -210,6 +209,16 @@
         //给每条记录的删除按钮添加事件
         $(document).on("click", ".delBtn", deleteSingleRecord);
     });
+
+
+
+    //
+    //设置后端访问url
+    function setBackUrl(backUrl){
+        this.backUrl = backUrl;
+        gotoPage();
+    }
+
 
     //修改信息时从远端获取数据并填入表单
     function updateForm(ele) {
@@ -238,10 +247,9 @@
     function search() {
         //修改数据之前先进行数据校验
         //校验通过向服务器发送请求
-        // alert("search被调用了");
         $.ajax({
             //url: "${app}/userrest/list?startDate=2020-10-12&endDate=2020-10-13",
-            url: "${app}/userrest/list",
+            url: backUrl,
             type: "GET",
             data: $("#searchForm").serialize(),
             success: function (result) {
@@ -258,7 +266,6 @@
             }
         });
     }
-
     //提交用户修改的信息
     function updateUser() {
         //修改数据之前先进行数据校验
@@ -269,7 +276,6 @@
             data: $("#updateModal form").serialize(),
             success: function (result) {
                 // alert(result.message);
-
                 $("#updateModal").modal("hide");//关闭模态框
                 gotoPage(currentPage);//回到当前页面
                 alertTips(result.message,"alert-success");
@@ -281,7 +287,6 @@
             }
         });
     }
-
     //打开添加的模态框并清空原有数据
     function addForm() {
         //打开模态框
@@ -289,7 +294,6 @@
         //将表单中原有数据清空
         $("#addModal form").get(0).reset();
     }
-
     function addUser() {
         //添加数据之前先进行数据校验
         //校验通过向服务器发送请求
@@ -309,7 +313,6 @@
             }
         });
     }
-
     function deleteSingleRecord(ele) {
         //询问是否删除
         if (!confirm("真的删除"))
@@ -330,7 +333,6 @@
         });
         return false;
     }
-
     function deleteMuliRecord() {
         //点击删除所选按钮时删除多条记录
 
@@ -365,12 +367,42 @@
         }
     }
 
+    //页面数据请求
     function gotoPage(page, pageSize) {
         var page1 = page == null ? 1 : page;
         var pageSize1 = pageSize == null ? 10 : page;
+        //表明判断
+        var tableName="userList";
+        tableName = backUrl.substring("${app}/".length,backUrl.length);
+        tableName = tableName.substring(0,tableName.indexOf("/"));
+
+        //请求表头
+        let columns ;
         $.ajax({
             type: "GET",
-            url: "${app}/userrest/list?pageNum=" + page1 + "&pageSize=" + pageSize1,
+            url:"${app}/static/admin/json/tHead.json",
+            success:function(result) {
+                //匹配对应的表头
+                columns = result[tableName];
+                //删除表中的数据
+                $("#dataTable tbody").empty();
+                //构建表头
+                var thr = $("#dataTable thead tr");
+                var firthTh = thr.children().first();
+                firthTh.nextAll().remove();
+                thr.append($("<th>序号#</th>"));
+               for(let i in columns){
+                    thr.append($('<th></th>').text(columns[i]));
+                }
+                 thr.append($('<th>操作(修改)</th>'))
+                    .append($('<th>操作(删除)</th>'));
+            }
+        });
+
+        //请求数据
+        $.ajax({
+            type: "GET",
+            url: backUrl +"?pageNum=" + page1 + "&pageSize=" + pageSize1,
             dataType: "json",
             // data: "pageNum=" + page1 + "&pageSize=" + pageSize1,
             data: $("#searchForm").serialize(),
@@ -378,7 +410,7 @@
                 // 解析返回的json数据并显示到界面中,封装为函数吧,太多东西了
                 currentPage = result.dataZone.pageInfo.pageNum;
                 maxPages = result.dataZone.pageInfo.pages;
-                parseDataAndShow(result);
+                parseDataAndShow(result,columns);
                 //解析渲染分页条
                 parsePageAndShow(result);
             },
@@ -388,28 +420,29 @@
         });
     }
 
-    function parseDataAndShow(result) {
-        $("#userTable tbody").empty();
+    function parseDataAndShow(result,columns) {
         // 获取数据集合
-        let users = result.dataZone.pageInfo.list;
-        $.each(users, function (index, item) {
+        var datas = result.dataZone.pageInfo.list;
+        $.each(datas, function (index, item) {
             //构建行
             var uTr = $("<tr></tr>");
             //构建多个单元格
             var checkboxTh = $('<th><input type="checkbox" name="choiceList" value="${item.uid}"/></th>');
             var countTh = $('<th></th>').text(index + 1);
-            var uidTd = $('<td></td>').text(item.uid);
-            var usernameTd = $('<td></td>').text(item.username);
-            var passwordTd = $('<td></td>').text(item.password);
-            var addTimeTd = $('<td></td>').text(new Date(item.addTime).Format("yyyy-MM-dd HH:mm:ss"));
+            uTr.append(checkboxTh).append(countTh);
+            for(let cloumn in columns){
+                if(cloumn == "addTime"){
+                    item[cloumn] = new Date(item.addTime).Format("yyyy-MM-dd HH:mm:ss");
+                }
+                uTr.append($('<td></td>').text(item[cloumn]));
+            }
             var upBtnTd = $('<td></td>').html('<a class="upBtn btn btn-info btn-sm" href="${app}/userrest/opt/' + item.uid + '">修改</a>');
             var delBtnTd = $('<td></td>').html('<a class="delBtn btn btn-danger btn-sm" href="${app}/userrest/opt/' + item.uid + '">删除</a>');
             //将单元格追加到行中
-            uTr.append(checkboxTh).append(countTh).append(uidTd)
-                .append(usernameTd).append(passwordTd).append(addTimeTd)
-                .append(upBtnTd).append(delBtnTd);
+
+            uTr.append(upBtnTd).append(delBtnTd);
             // 将行追加到表体中
-            $("#userTable tbody").append(uTr);
+            $("#dataTable tbody").append(uTr);
         });
     }
 
@@ -417,10 +450,7 @@
         //因为是不跨页面的刷新操作,所以操作前先清空当前节点内容
         $("#pageTips").empty();
         $("#pageList").empty();
-
         var pageInfo = result.dataZone.pageInfo;
-        //
-
         //构建分页信息
         $("#pageTips").html("共" + pageInfo.total + "条记录," + pageInfo.pages + "页,每页" + pageInfo.pageSize + "条");
         //构建分页列表
@@ -441,7 +471,6 @@
             numLi.click(function () {
                 gotoPage(item);//跳转到指定页面
             });
-
             numLi.appendTo(oUl);
         });
 
@@ -514,7 +543,6 @@
         $('.alert').html(message).addClass(alert_type).show().delay(1000).fadeOut();
     }
 
-
     //日期转换
     Date.prototype.Format = function (fmt) { // author: meizz
         var o = {
@@ -540,7 +568,6 @@
     function parseISO8601(dateStringInRange) {
         var isoExp = /^\s*(\d{4})-(\d\d)-(\d\d)\s(\d\d):(\d\d)\s*$/, date = new Date(
             NaN), month, hour, min, parts = isoExp.exec(dateStringInRange);
-
         if (parts) {
             month = +parts[2];
             hour = +parts[4];
@@ -560,5 +587,20 @@
         return !isNaN(d.getTime());
     }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
